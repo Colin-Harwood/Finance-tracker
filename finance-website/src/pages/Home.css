@@ -1,3 +1,20 @@
 body {
     background-color: brown;
 }
+
+h1 {
+    color: white;
+    text-align: center;
+    background-color: black;
+}
+
+/* Home.css */
+
+.home-container {
+    background-color: #f0f0f0; /* Example background color */
+  }
+  
+  .home-container h1 {
+    color: #333; /* Example text color */
+  }
+  
