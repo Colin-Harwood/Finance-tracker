@@ -1,0 +1,9 @@
+Project Outline:
+    Finance Tracker for people to create a tracker for expenditure.
+    Features:
+        Allow users to select what the money going out was for, eg rent, utilities, fun.
+        Allow users to create new categories for what money is going too.
+        Allow users to create cycling expenditure, eg every week/month.
+        Allow users to have a section to track recurring payments.
+        Use Seaborn/Matplotlib to visualise the users expenditure.
+        Log in system.
