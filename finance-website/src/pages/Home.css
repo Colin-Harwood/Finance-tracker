@@ -1,26 +1,23 @@
 body {
-    background-color: brown;
+    background-color: rgb(255, 255, 255);
 }
 
 h1 {
-    color: rgb(255, 255, 255);
-    text-align: center;
-    background-color: black;
-}
-
-/* Home.css */
-
-.home-container {
-    background-color: #ff0000; /* Example background color */
-  }
-  
-  .home-container h1 {
-    color: #333; /* Example text color */
-  }
-
-p {
-    color: rgb(255, 255, 255);
-    text-align: center;
-    background-color: black;
+  color: #6366f1;
 }
   
+#services {
+  background-color: #f7fafc;
+  padding: 50px 10px;
+}
+
+#SignUpButton {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100px;
+}
