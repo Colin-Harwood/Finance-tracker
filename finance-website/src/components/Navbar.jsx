@@ -24,7 +24,15 @@ export const Navbar = () => {
           <NavLink to="/services">Services</NavLink>
         </li>
         <li>
-          <NavLink to="/contact">Contact</NavLink>
+          <NavLink to="/contact"  id="signUp">Contact</NavLink>
+        </li>
+        <li>
+        <NavLink to="/contact" id="logIn" className="w-24">
+            <div className="flex items-center contact-flex">
+                Contact 
+                <img src="/RightArrowWhite.png" alt="Right Arrow" width="20px" className="mt-1"/>
+            </div>
+        </NavLink>
         </li>
       </ul>
     </nav>

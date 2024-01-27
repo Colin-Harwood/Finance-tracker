@@ -1,12 +1,12 @@
 .active{
-    background-color: #1d4ed8;
+    background-color: #f6f8fd;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #0f172a;
+    background-color: #6366f1;
     color: white;
     position: sticky;
     top: 0;
@@ -22,6 +22,7 @@ nav .title {
 
 nav ul {
     display: flex;
+    margin-right: 10px;
 }
 
 nav ul li {
@@ -38,7 +39,7 @@ nav ul li a {
 }
 
 nav ul li a:not(.active):hover {
-    background-color:#172554 ;
+    background-color:#6366f1 ;
 }
 
 nav .menu {
@@ -57,6 +58,22 @@ nav .menu span {
     width: 100%;
     background-color: #fff;
     border-radius: 0.2rem;
+}
+
+#signUp {
+    background-color: #fcfcfc;
+    color:#6366f1;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+    transition: transform 0.3s ease; 
+}
+
+#signUp:hover {
+    color:#6366f1;
+    transform: scale(1.15);
+}
+
+#logIn:hover {
+    background-color: #8c8efa;
 }
 
 
