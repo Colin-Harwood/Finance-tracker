@@ -1,10 +1,12 @@
 import React from 'react';
 import './Home.css';
+import { Navbar } from '../components/Navbar.jsx';
 
 
 const Home = () => {
   return (
     <>
+    <Navbar/>
     <div className="flex flex-row justify-center content-center " id="welcome-text">
       <div className="flex flex-col home-container h-screen justify-center">
         <h1 className="text-9xl sm-text-3xl font-bold text-center">

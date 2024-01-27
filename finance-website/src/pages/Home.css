@@ -21,3 +21,14 @@ h1 {
   cursor: pointer;
   width: 100px;
 }
+
+#SignUpButton:hover {
+  background-color: #6365f1e0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100px;
+}
