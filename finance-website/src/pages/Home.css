@@ -3,7 +3,7 @@ body {
 }
 
 h1 {
-    color: white;
+    color: rgb(255, 255, 255);
     text-align: center;
     background-color: black;
 }
@@ -11,10 +11,16 @@ h1 {
 /* Home.css */
 
 .home-container {
-    background-color: #f0f0f0; /* Example background color */
+    background-color: #ff0000; /* Example background color */
   }
   
   .home-container h1 {
     color: #333; /* Example text color */
   }
+
+p {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    background-color: black;
+}
   
