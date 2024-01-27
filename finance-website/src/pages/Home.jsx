@@ -8,11 +8,11 @@ const Home = () => {
     <>
     <Navbar/>
     <div className="flex flex-row justify-center content-center " id="welcome-text">
-      <div className="flex flex-col home-container h-screen justify-center">
-        <h1 className="text-9xl sm-text-3xl font-bold text-center">
+      <div className="flex flex-col home-container h-screen justify-center  main-header">
+        <h1 className="lg:text-9xl text-6xl font-bold text-center">
           Hello worl
         </h1>
-        <p className="text-3xl">
+        <p className="lg:text-3xl text-2xl">
           This is a finance tracker website.
         </p>
         <button className="text-left mt-10 " id='SignUpButton'>
