@@ -28,22 +28,28 @@ export const Navbar = () => {
   <li>
     <NavLink to="/services">Services</NavLink>
   </li>
-  <li>
-    <NavLink to="/Signup"  id="signUp">Contact</NavLink>
-  </li>
+  
   {isLoggedIn ? (
     <li>
       <NavLink to="/logout" id="logOut">Logout</NavLink>
     </li>
   ) : (
+    <>
     <li>
-      <NavLink to="/Login" id="logIn" className="w-24">
-        <div className="flex items-center contact-flex">
-          Login
-          <img src="/RightArrowWhite.png" alt="Right Arrow" width="20px" className="mt-1"/>
-        </div>
-      </NavLink>
-    </li>
+    <NavLink to="/Signup"  id="signUp">Sign Up</NavLink>
+    
+  </li>
+  <div className="flex flex-row justify-center items-center text-center">
+  <li>
+    <NavLink to="/Login" id="logIn" className="w-auto">
+      <div className="flex items-center justify-center text-center contact-flex">
+        Login
+        <img src="/RightArrowWhite.png" alt="Right Arrow" width="20px" className="mt-1"/>
+      </div>
+    </NavLink>
+  </li>
+</div>
+    </>
   )}
 </ul>
     </nav>
