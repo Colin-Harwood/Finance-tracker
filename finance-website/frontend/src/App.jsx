@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
+import Logout from './pages/Logout'
 import { AuthProvider } from './components/AuthContext';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Route path="/Dashboard" element={<Dashboard />} />
       <Route path="/Signup" element={<Signup />} />
       <Route path="/Login" element={<Login />} />
+      <Route path="/Logout" element={<Logout />} />
     </Routes>
     </AuthProvider>
   )
