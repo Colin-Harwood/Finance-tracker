@@ -6,6 +6,7 @@ import { Navbar } from '../components/Navbar.jsx';
 const Home = () => {
   return (
     <>
+    <div id="home">
     <Navbar/>
     <div className="flex flex-row justify-center content-center " id="welcome-text">
       <div className="flex flex-col home-container h-screen justify-center  main-header">
@@ -15,15 +16,17 @@ const Home = () => {
         <p className="lg:text-3xl text-2xl">
           This is a finance tracker website.
         </p>
+        <a href="/sign-up">
         <button className="text-left mt-10 " id='SignUpButton'>
           Sign Up
         </button>
+        </a>
         </div>
     </div>
     <div className="h-96" id="services">
       <p>Test</p>
     </div>
-      
+    </div>
     </>
   );
 };

@@ -4,8 +4,9 @@
     }
 }
 
-body {
-    background-color: #6366f1;
+#login {
+    min-height: 100vh !important;
+    background-color: #6366f1 !important;
 }
 
 form {

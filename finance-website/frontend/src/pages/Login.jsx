@@ -43,6 +43,7 @@ const Login = () => {
 
   return (
     <>
+    <div id='login'>
         <body>
         <div className="flex flex-col items-center justify-center">
       <h1 className="lg:text-9xl text-6xl text-white mt-16"><b>Login</b></h1>
@@ -57,6 +58,7 @@ const Login = () => {
       </form>
       </div>
       </body>
+    </div>
     </>
   );
 }
