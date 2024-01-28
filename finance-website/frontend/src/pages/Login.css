@@ -1,0 +1,56 @@
+@media (max-width: 768px) {
+    form {
+        width: 90% !important;
+    }
+}
+
+body {
+    background-color: #6366f1;
+}
+
+form {
+    background-color: white;
+    border-radius: 15px;
+    width: 30%;
+    border: 4px solid #ccc; 
+}
+
+form label {
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+form input {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#submit {
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100px;
+}
+
+#submit:hover {
+    background-color: #6365f1e0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100px;
+}
+
+h1 {
+    font-weight: 900 !important;
+}

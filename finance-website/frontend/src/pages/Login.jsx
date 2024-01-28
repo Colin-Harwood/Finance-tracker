@@ -1,11 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../components/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import './Login.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -26,6 +30,7 @@ const Login = () => {
       setIsLoggedIn(true);
       console.log("Login succeeded")
       console.log(data);
+      navigate('/');
     } else {
       // Login failed
       console.error(data);
@@ -38,14 +43,20 @@ const Login = () => {
 
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+        <body>
+        <div className="flex flex-col items-center justify-center">
+      <h1 className="lg:text-9xl text-6xl text-white mt-16"><b>Login</b></h1>
+        </div>
+        <div className="flex flex-col items-center justify-center">
+      <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center mt-20 h-96">
         <label htmlFor="userName">UserName</label>
-        <input type="text" id="userName" name="email" placeholder="Email" value={username} onChange={e => setUsername(e.target.value)} required />
+        <input type="text" id="userName" name="email" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
-        <button type="submit">Log in</button>
+        <button type="submit" id="submit">Log in</button>
       </form>
+      </div>
+      </body>
     </>
   );
 }

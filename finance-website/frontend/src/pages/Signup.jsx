@@ -1,8 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+    
+    const navigate = useNavigate();
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    
 
     const username = event.target.elements.userName.value;
     const password = event.target.elements.password.value;
@@ -23,6 +30,7 @@ const Signup = () => {
     })
     .then(data => {
       console.log(data)
+      navigate('/login');
     })
     .catch(error => {
       console.error(error);

@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(250, 242, 242) !important;
 }
 
 h1 {
@@ -7,7 +7,7 @@ h1 {
 }
   
 #services {
-  background-color: #f7fafc;
+  background-color: #d6e4ee;
   padding: 50px 10px;
 }
 
