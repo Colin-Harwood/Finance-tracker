@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
-    
+
     const navigate = useNavigate();
 
 
@@ -39,14 +39,22 @@ const Signup = () => {
 
   return (
     <>
-        <h1>Sign Up</h1>
-        <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center">
-            <label htmlFor="userName">UserName</label>
-            <input type="text" id="userName" name="userName" placeholder="Email" />
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Password" />
-            <button type="submit">Sign Up</button>
-        </form>
+        <div id='login'>
+        <body>
+        <div className="flex flex-col items-center justify-center">
+      <h1 className="lg:text-9xl text-6xl text-white mt-16"><b>Sign-Up</b></h1>
+        </div>
+        <div className="flex flex-col items-center justify-center">
+      <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center mt-20 h-96">
+        <label htmlFor="userName">UserName</label>
+        <input type="text" id="userName" name="email" placeholder="Username"/>
+        <label htmlFor="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password"/>
+        <button type="submit" id="submit">Sign-up</button>
+      </form>
+      </div>
+      </body>
+    </div>
     </>
   )
 }
