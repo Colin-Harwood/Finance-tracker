@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../components/AuthContext';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -20,12 +23,18 @@ const Login = () => {
 
     if (response.ok) {
       // Login succeeded
+      setIsLoggedIn(true);
+      console.log("Login succeeded")
       console.log(data);
     } else {
       // Login failed
       console.error(data);
     }
   };
+
+  if (isLoggedIn) {
+    return <p>You are already logged in!</p>;
+  }
 
   return (
     <>
