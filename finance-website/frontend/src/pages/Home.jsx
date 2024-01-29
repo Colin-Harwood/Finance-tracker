@@ -16,7 +16,7 @@ const Home = () => {
         <p className="lg:text-3xl text-2xl">
           This is a finance tracker website.
         </p>
-        <a href="/sign-up">
+        <a href="/Signup">
         <button className="text-left mt-10 " id='SignUpButton'>
           Sign Up
         </button>
