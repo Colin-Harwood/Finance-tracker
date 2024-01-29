@@ -19,3 +19,9 @@
     margin-top: -70px;
     height: 270px;
 }
+
+.grid a {
+    color: inherit !important;
+    text-decoration: none !important;
+    display: block !important;
+  }

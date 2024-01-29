@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Sidebar.css';
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [marginTop, setMarginTop] = useState('0');
 
   useEffect(() => {
@@ -46,16 +46,18 @@ const Sidebar = () => {
           </Link>
           <hr />
           <Link to="/expenses">
-          <li className="mt-2 text-2xl">
+          <li className="mt-2 mb-2 text-2xl">
             <h3>Expenses</h3>
           </li>
           </Link>
+          <hr />
           <Link to="/subscriptions">
-          <li className="mt-2 text-2xl">
+          <li className="mt-2 mb-2 text-2xl">
             <h3>Subscriptions</h3>
           </li>
           </Link>
-          <Link to="/subscriptions">
+          <hr />
+          <Link to="/income-goal">
           <li className="mt-2 text-2xl">
             <h3>Income Goal</h3>
           </li>

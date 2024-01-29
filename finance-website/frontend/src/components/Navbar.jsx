@@ -8,8 +8,6 @@ export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { isLoggedIn } = useContext(AuthContext);
 
-  console.log(isLoggedIn)
-
   return (
 
     <nav>
