@@ -15,24 +15,24 @@ const Dashboard = () => {
       </div>
       <div className="grid grid-cols-11 gap-5 mt-16">
         <div className="lg:col-span-4 md:col-span-7 col-span-11 column">
-          <p className="text-2xl text-center"><b>Head Name</b></p>
+          <p className="text-2xl text-center"><b>Month Overview</b></p>
         </div>
         <div className="lg:col-span-2 md:col-span-4 col-span-11 column">
-          <p className="text-2xl text-center"><b>Head Name</b></p>
+          <p className="text-2xl text-center"><b>Subscriptions</b></p>
         </div>
         <div className="lg:col-span-5 col-span-11 column h-32">
-          <p className="text-2xl text-center"><b>Head Name</b></p>
+          <p className="text-2xl text-center"><b>Income Goal</b></p>
         </div>
       </div>
       <div className="grid grid-cols-11 gap-5 mt-5">
         <div className="lg:col-span-3 md:col-span-6 col-span-11 column">
-          <p className="text-2xl text-center"><b>Head Name</b></p>
+          <p className="text-2xl text-center"><b>Income Sources</b></p>
         </div>
         <div className="lg:col-span-3 md:col-span-5 col-span-11 column">
-          <p className="text-2xl text-center"><b>Head Name</b></p>
+          <p className="text-2xl text-center"><b>Spending</b></p>
         </div>
         <div className="lg:col-span-5 col-span-11 column IandE">
-          <p className="text-2xl text-center"><b>Head Name</b></p>
+          <p className="text-2xl text-center"><b>Income and Spending</b></p>
         </div>
       </div>
     </div>

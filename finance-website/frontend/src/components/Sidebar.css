@@ -45,6 +45,7 @@ color: white;
 .sidebar:not(.open) {
 animation: removeMarginTop 0.3s forwards;
 animation-delay: 0.3s;
+color: white;
 }
 
 .sidebar button {

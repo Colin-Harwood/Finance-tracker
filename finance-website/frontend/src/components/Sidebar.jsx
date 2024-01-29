@@ -33,21 +33,31 @@ const Sidebar = () => {
           <img src="/icons8-menu-30.png" alt="Hamburger Menu Icon" width="30px"/>
         </button>
         <ul>
-          <Link to="/page1">
+          <Link to="/dashboard">
           <li className="mb-2 text-2xl">
-          <h3>Page 1</h3>
+          <h3>Dashboard</h3>
           </li>
           </Link>
           <hr />
-          <Link to="/page2">
+          <Link to="/income">
           <li className="mb-2 text-2xl mt-2">
-            <h3>Page 2</h3>
+            <h3>Income</h3>
           </li>
           </Link>
           <hr />
-          <Link to="/page1">
+          <Link to="/expenses">
           <li className="mt-2 text-2xl">
-            <h3>Page 3</h3>
+            <h3>Expenses</h3>
+          </li>
+          </Link>
+          <Link to="/subscriptions">
+          <li className="mt-2 text-2xl">
+            <h3>Subscriptions</h3>
+          </li>
+          </Link>
+          <Link to="/subscriptions">
+          <li className="mt-2 text-2xl">
+            <h3>Income Goal</h3>
           </li>
           </Link>
           {/* Add more links as needed */}
