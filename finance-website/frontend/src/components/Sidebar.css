@@ -8,14 +8,14 @@
   }
   
 .open-button {
-position: absolute;
+position: fixed;
 top: 50%;
-left: 0;
+left: 10px;
 transform: translateY(-50%);
 }
 
 #close-button {
-    position: absolute;
+    position: fixed;
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
@@ -39,6 +39,7 @@ transform: translateX(-100%);
 transform: translateX(0);
 margin-top: 67px;
 color: white;
+
 }
 
 .sidebar:not(.open) {
