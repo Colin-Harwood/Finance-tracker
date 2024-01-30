@@ -20,4 +20,6 @@ const allInfoSchema = mongoose.Schema(
     },
 );
 
-export const allInfo = mongoose.model('allInfo', allInfoSchema)
+const allInfo = mongoose.model('allInfo', allInfoSchema)
+
+module.exports = allInfo

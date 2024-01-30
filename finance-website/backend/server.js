@@ -8,6 +8,8 @@ const bcrypt = require('bcryptjs');
 const cors = require('cors');
 import { allInfo } from './models/AllInfo.js'
 
+const allInfo = require('./models/AllInfo.js')
+
 const app = express();
 
 app.use(express.json()); // Add this line
@@ -96,6 +98,24 @@ app.get('/', (req, res) => {
 app.post('/signup', (req, res) => {
     const { username, password } = req.body;
   
+    const userInfo = {
+      userName: username,
+      income: {},
+      expenses: {},
+      subscriptions: {},
+      incomeGoal: {},
+    }
+
+    const newUserInfo = new allInfo(userInfo);
+
+    newUserInfo.save()
+    .then(savedUser => {
+        console.log('User info saved:', username);
+    })
+    .catch(error => {
+        console.error('Error saving user:', error);
+    });
+
     // Hash the password
     bcrypt.hash(password, 10)
 
