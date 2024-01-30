@@ -6,7 +6,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
-import { allInfo } from './models/AllInfo.js'
+
 
 const allInfo = require('./models/AllInfo.js')
 
@@ -103,18 +103,20 @@ app.post('/signup', (req, res) => {
       income: {},
       expenses: {},
       subscriptions: {},
-      incomeGoal: {},
+      incomeGoal: 0,
     }
 
     const newUserInfo = new allInfo(userInfo);
 
+    console.log(userInfo)
+
     newUserInfo.save()
-    .then(savedUser => {
-        console.log('User info saved:', username);
-    })
-    .catch(error => {
-        console.error('Error saving user:', error);
-    });
+      .then(savedUser => {
+          console.log('User info saved:', userInfo);
+      })
+      .catch(error => {
+          console.error('Error saving user:', error);
+      });
 
     // Hash the password
     bcrypt.hash(password, 10)
@@ -138,3 +140,22 @@ app.post('/signup', (req, res) => {
         res.status(500).json({ error: err });
       });
   });
+
+  app.get('/info', (req, res) => {
+    allInfo.findOne({ userName: 'test6' })
+        .then(userInfo => {
+            // Check if userInfo exists
+            if (userInfo) {
+                // If userInfo exists, send it as the response
+                res.status(200).json(userInfo);
+            } else {
+                // If userInfo does not exist, send a 404 response
+                res.status(404).json({ message: 'User info not found test4' });
+            }
+        })
+        .catch(error => {
+            // If an error occurs, send a 500 response with the error message
+            console.error('Error querying user info:', error);
+            res.status(500).json({ error: 'Internal server error' });
+        });
+});
