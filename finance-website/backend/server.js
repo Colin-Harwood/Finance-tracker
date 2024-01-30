@@ -6,6 +6,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
+import { allInfo } from './models/AllInfo.js'
 
 const app = express();
 
@@ -97,6 +98,7 @@ app.post('/signup', (req, res) => {
   
     // Hash the password
     bcrypt.hash(password, 10)
+
       .then(hash => {
         // Create a new user
         const user = new User({
@@ -106,6 +108,8 @@ app.post('/signup', (req, res) => {
   
         // Save the new user to the database
         return user.save();
+
+        
       })
       .then(user => {
         res.status(200).json({ message: 'User created', user });
