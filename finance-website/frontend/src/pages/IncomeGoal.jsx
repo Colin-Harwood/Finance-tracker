@@ -1,26 +1,37 @@
-import React from 'react'
+import React from 'react';
 import { Navbar } from '../components/Navbar.jsx';
-import './IncomeGoal.css'
+import './IncomeGoal.css';
 import Sidebar from '../components/Sidebar.jsx';
 
 const IncomeGoal = () => {
     return (
         <>
-        <Navbar/>
-        < Sidebar />
-        <p>Income Goal</p>
-        <div className="flex justify-center mt-10">
-      <div className="flex flex-col content-center rounded-md skill-div">
-        <div className="skill px-4 flex flex-row">
-          <h3 className="pr-7">Django</h3>
-          <div className="skill-bar ">
-            <div className="skill-level" style={{width: '87%'}}></div>
-          </div>
-        </div>
-        </div>
-        </div>
+            <Navbar />
+            <Sidebar />
+            <div className="p-10">
+                <div id="income-head" className="flex justify-center lg:text-7xl text-5xl">
+                    <h1 className="">Income Goal</h1>
+                </div>
+                <div className="flex justify-center items-center mt-10 h-96">
+                    <div className="flex flex-col content-center rounded-md skill-div">
+                        <div className="skill px-4 flrx flex-col h-24">
+                            <div className="flex flex-row justify-between items-center text-start mb-6 w-11/12">
+                                <div>
+                                    <h1 className="text-xl lg:text-4xl">Percent%</h1>
+                                </div>
+                                <div>
+                                    <h1 className="text-xl lg:text-4xl">Amount/Total</h1>
+                                </div>
+                            </div>
+                            <div className="skill-bar ">
+                                <div className="skill-level" style={{ width: '87%' }}></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
-    )
-}
+    );
+};
 
-export default IncomeGoal
+export default IncomeGoal;
