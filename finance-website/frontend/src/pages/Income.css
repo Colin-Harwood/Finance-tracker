@@ -8,3 +8,13 @@
     -webkit-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
 }
+
+.columns-income-head {
+    border-bottom: #d8d8d8 1px solid;
+
+}
+
+.column-middle {
+    border-left: #d8d8d8 1px solid;
+    border-right: #d8d8d8 1px solid;
+}
