@@ -27,9 +27,12 @@ const Login = () => {
 
     if (response.ok) {
       // Login succeeded
+
       setIsLoggedIn(true);
       console.log("Login succeeded")
       console.log(data);
+      localStorage.setItem('userName', username);
+      console.log(localStorage.getItem('userName'));
       navigate('/');
     } else {
       // Login failed

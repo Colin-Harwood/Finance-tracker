@@ -16,11 +16,20 @@ app.use(express.json()); // Add this line
 app.use(express.urlencoded({ extended: true })); // And this line
 
 app.use(session({ secret: 'secret', resave: false, saveUninitialized: false }));
+
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.authenticate('session'))
+
+
 
 app.use(cors());
 
+app.use(cors({
+  origin: 'http://localhost:5173', // allow to server to accept request from different origin
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true // allow session cookie from browser to pass through
+}));
 // User model
 const UserSchema = new mongoose.Schema({
     username: String,
@@ -57,14 +66,25 @@ passport.use(new LocalStrategy(
 
 //Passport session management set up
 passport.serializeUser(function(user, done) {
+  console.log(user.id)
     done(null, user.id);
   });
   
-passport.deserializeUser(function(id, done) {
+  passport.deserializeUser(function(id, done) {
     User.findById(id, function(err, user) {
-        done(err, user);
+      if (err) {
+        console.error('Error during deserialization:', err);
+        return done(err);
+      }
+      if (!user) {
+        console.error('No user found during deserialization.');
+        return done(null, false);
+      }
+      console.log('Deserialization successful:', user);
+      return done(null, user);
     });
-});
+  });
+  
 
 // Create login route
 app.post('/login', (req, res, next) => {
@@ -85,14 +105,43 @@ app.post('/login', (req, res, next) => {
         }
   
         // Authentication succeeded
+        console.log('username', req.user)
         return res.status(200).json({ message: 'Authentication succeeded', user });
+        
       });
     })(req, res, next);
   });
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
+app.get('/dashboard', function(req, res){
+  if(req.user){
+    res.send('Welcome to your dashboard!', User.find());
+  } else {
+    res.send('Please log in first.', User.find(), 'check');
+  }
 });
+
+app.get('/protected', function(req, res){
+  if(req.user){
+    res.send(`Hello, ${req.user.username}. You accessed the protected route.`);
+  } else {
+    res.status(401).send('Please log in to access this route.');
+  }
+});
+
+
+  
+
+// Apply Passport's authentication middleware to the '/' route
+app.get('/', (req, res) => {
+  // At this point, req.user should be available if authentication was successful
+  if (req.user) {
+    res.send(`Hello World, username: ${req.user}`);
+  } else {
+    // This block should not be reached if authentication was successful
+    res.status(401).json({ message: 'Unauthorized' });
+  }
+});
+
 
 // Create signup route
 app.post('/signup', (req, res) => {
@@ -141,21 +190,40 @@ app.post('/signup', (req, res) => {
       });
   });
 
-  app.get('/info', (req, res) => {
-    allInfo.findOne({ userName: 'test6' })
-        .then(userInfo => {
-            // Check if userInfo exists
-            if (userInfo) {
-                // If userInfo exists, send it as the response
-                res.status(200).json(userInfo);
-            } else {
-                // If userInfo does not exist, send a 404 response
-                res.status(404).json({ message: 'User info not found test4' });
-            }
-        })
-        .catch(error => {
-            // If an error occurs, send a 500 response with the error message
-            console.error('Error querying user info:', error);
-            res.status(500).json({ error: 'Internal server error' });
-        });
+app.get('/info', (req, res, next) => {
+    // Check if a user is logged in
+  
+      const currentUsername = req.user.username;
+
+      console.log(req.user)
+
+      console.log('user', currentUsername)
+
+      allInfo.findOne({ userName: currentUsername })
+          .then(userInfo => {
+              // Check if userInfo exists
+              if (userInfo) {
+                  // If userInfo exists, send it as the response
+                  res.status(200).json(userInfo);
+              } else {
+                  // If userInfo does not exist, send a 404 response
+                  res.status(404).json({ message: 'User info not found for ' + currentUsername });
+              }
+          })
+          .catch(error => {
+              // If an error occurs, send a 500 response with the error message
+              console.error('Error querying user info:', error);
+              res.status(500).json({ error: 'Internal server error' });
+          });
+   
+    
 });
+
+
+app.post('/income', (req, res) => {
+  res.send('hello');
+})
+
+app.get('/income', (req, res) => {
+  res.send(req.user)
+})
