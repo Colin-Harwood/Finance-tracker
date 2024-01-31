@@ -15,15 +15,18 @@ const app = express();
 app.use(express.json()); // Add this line
 app.use(express.urlencoded({ extended: true })); // And this line
 
-app.use(session({ secret: 'secret', resave: false, saveUninitialized: false }));
+app.use(session({
+  secret: 'your secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.authenticate('session'))
 
 
-
-app.use(cors());
 
 app.use(cors({
   origin: 'http://localhost:5173', // allow to server to accept request from different origin
@@ -64,26 +67,33 @@ passport.use(new LocalStrategy(
     }
   ));
 
-//Passport session management set up
+// Passport session management set up
 passport.serializeUser(function(user, done) {
-  console.log(user.id)
-    done(null, user.id);
-  });
-  
-  passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-      if (err) {
-        console.error('Error during deserialization:', err);
-        return done(err);
-      }
-      if (!user) {
-        console.error('No user found during deserialization.');
-        return done(null, false);
-      }
-      console.log('Deserialization successful:', user);
-      return done(null, user);
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  User.findById(id)
+    .then(user => {
+      done(null, user);
+    })
+    .catch(err => {
+      done(err);
     });
-  });
+});
+
+// Middleware to protect routes
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login');
+}
+
+// Then use ensureAuthenticated in your routes
+app.get('/protected', ensureAuthenticated, function(req, res){
+  res.send(`Hello, ${req.user.username}. You accessed the protected route.`);
+});
   
 
 // Create login route
