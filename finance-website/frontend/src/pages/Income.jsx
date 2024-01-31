@@ -4,6 +4,8 @@ import './Income.css'
 import Sidebar from '../components/Sidebar.jsx';
 
 const Income = () => {
+
+
     return (
         <>
         <Navbar/>
@@ -15,16 +17,34 @@ const Income = () => {
             <div id="income-all" className="mx-auto lg:w-9/12 w-11/12">
                 <div className="grid grid-cols-3">
                     <div className="columns-income-head">
-                        <h3 className="px-3 py-1">Category</h3>
+                        <h3 className="px-3 py-1 text-2xl "><b>Category</b></h3>
                     </div>
                     <div className="columns-income-head column-middle">
-                        <h3 className="px-3 py-1">Amount</h3>
+                        <h3 className="px-3 py-1 text-2xl "><b>Amount</b></h3>
                     </div >
                     <div className="columns-income-head">
-                        <h3 className="px-3 py-1">Update</h3>
+                        <h3 className="px-3 py-1 text-2xl "><b>Update</b></h3>
                     </div>
                 </div>
                 <hr/>
+                <div className="grid grid-cols-3">
+                    <div className="columns-income-head">
+                        <h3 className="px-3 py-2">Category</h3>
+                    </div>
+                    <div className="columns-income-head">
+                        <h3 className="px-3 py-2">Amount</h3>
+                    </div >
+                    <div className="columns-income-head">
+                        <h3 className="px-3 py-2">Update</h3>
+                    </div>
+                </div>
+                <hr/>
+                <div className="flex flex-row justify-end items-end">
+                
+                <button onClick="" id="addButton">
+                    <img src="/icons8-plus-96.png" width="65px"></img>
+                </button>
+                </div>
             </div>
         </div>
         </>

@@ -100,7 +100,7 @@ app.post('/signup', (req, res) => {
   
     const userInfo = {
       userName: username,
-      income: {},
+      incomes: {},
       expenses: {},
       subscriptions: {},
       incomeGoal: 0,
