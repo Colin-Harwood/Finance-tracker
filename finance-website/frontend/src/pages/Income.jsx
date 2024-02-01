@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from '../components/Navbar.jsx';
 import './Income.css'
 import Sidebar from '../components/Sidebar.jsx';
@@ -11,6 +11,17 @@ const Income = () => {
     const [showForm, setShowForm] = useState(false);
     const [incomeSource, setIncomeSource] = useState('');
     const [amount, setAmount] = useState('');
+    const [info, setInfo] = useState(null);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/info', {
+          method: 'GET',
+          credentials: 'include'
+        })
+        .then(response => response.json())
+        .then(data => setInfo(data))
+        .catch(error => console.error('Error:', error));
+      }, []);
   
     const handleAddClick = () => {
       setShowForm(true);
@@ -76,17 +87,19 @@ const Income = () => {
                     </div>
                 </div>
                 <hr/>
-                <div className="grid grid-cols-3">
+                {info && info.incomes.map((income, index) => (
+                <div key={index} className="grid grid-cols-3">
                     <div className="columns-income-head">
-                        <h3 className="px-3 py-2">Category</h3>
+                    <h3 className="px-3 py-2">{income.source}</h3>
                     </div>
                     <div className="columns-income-head">
-                        <h3 className="px-3 py-2">Amount</h3>
-                    </div >
+                    <h3 className="px-3 py-2">{income.amount}</h3>
+                    </div>
                     <div className="columns-income-head">
-                        <h3 className="px-3 py-2">Update</h3>
+                    <h3 className="px-3 py-2">Update</h3>
                     </div>
                 </div>
+                ))}
                 <hr/>
                 <div className="flex flex-row justify-end items-end">
                 <button onClick={handleAddClick} id="addButton">
