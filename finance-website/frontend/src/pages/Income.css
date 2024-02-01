@@ -23,3 +23,19 @@
     right: 20px
     
 }
+
+.Overlay {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+  }
+
+.Modal {
+    position: absolute;
+}
+
+.Modal.open {
+    background-color: white;
+}
+
+.close-income-modal {
+    margin-top: 50px !important;
+}
