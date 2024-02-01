@@ -51,12 +51,9 @@ const Dashboard = () => {
           {info && (
     <>
       <p>{info.userName}</p>
-      {Object.entries(info.incomes).map(([key, value]) => (
-        <p key={key}>{`${key}: ${value}`}</p>
-      ))}
-      {Object.entries(info.expenses).map(([key, value]) => (
-        <p key={key}>{`${key}: ${value}`}</p>
-      ))}
+      {info && info.incomes.map((income, index) => (
+  <p key={index}>{`${income.source}: ${income.amount}`}</p>
+))}
     </>
   )}
         </div>

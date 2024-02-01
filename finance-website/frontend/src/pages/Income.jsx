@@ -9,14 +9,35 @@ Modal.setAppElement('#root');
 
 const Income = () => {
     const [showForm, setShowForm] = useState(false);
-
-  const handleAddClick = () => {
-    setShowForm(true);
-  };
-
-  const closeModal = () => {
-    setShowForm(false);
-  };
+    const [incomeSource, setIncomeSource] = useState('');
+    const [amount, setAmount] = useState('');
+  
+    const handleAddClick = () => {
+      setShowForm(true);
+    };
+  
+    const closeModal = () => {
+      setShowForm(false);
+    };
+  
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+  
+      const response = await fetch('http://localhost:3000/income', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ incomeSource, amount }),
+        
+      });
+      
+      console.log(JSON.stringify({ incomeSource, amount }));
+      const data = await response.json();
+      console.log(data);
+      closeModal();
+    };
 
   const customStyles = {
     overlay: {
@@ -81,14 +102,24 @@ const Income = () => {
                 style={customStyles}
                 >
                 
-                <form className="h-96 flex flex-col items-center justify-center">
+                <form onSubmit={handleSubmit} className="h-96 flex flex-col items-center justify-center">
                     <div className="flex flex-row justify-end w-full mr-3 px-5 mb-5" style={{marginTop: '-90px'}}>
                         <button onClick={closeModal} class="close-income-modal right-0">Close</button>
                     </div>
                     <label htmlFor="category">Category</label>
-                    <input type="text" id="category" name="category" placeholder="Category" required />
+                    <input
+              type="text"
+              value={incomeSource}
+              onChange={(e) => setIncomeSource(e.target.value)}
+              placeholder="Income Source"
+            />
                     <label htmlFor="amount">Amount</label>
-                    <input type="text" id="amount" name="amount" placeholder="Amount" required />
+                    <input
+              type="number"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              placeholder="Amount"
+            />
                     <button type="submit" id="submit">Add</button>
                 </form>
                 </Modal>
