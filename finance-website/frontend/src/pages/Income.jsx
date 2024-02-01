@@ -42,7 +42,7 @@ const Income = () => {
                 <div className="flex flex-row justify-end items-end">
                 
                 <button onClick="" id="addButton">
-                    <img src="/icons8-plus-96.png" width="65px"></img>
+                    <img src="/icons8-plus-96.png" width="65px" alt="plus"></img>
                 </button>
                 </div>
             </div>
