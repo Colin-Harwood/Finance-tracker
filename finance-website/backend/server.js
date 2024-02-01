@@ -247,6 +247,25 @@ app.post('/income', (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   });
 });
+
+app.delete('/income', (req, res) => {
+  const { incomeSource, amount } = req.body;
+  const currentUsername = req.user.username;
+
+  allInfo.findOneAndUpdate(
+    { userName: currentUsername },
+    { $pull: { incomes: { source: incomeSource, amount: amount } } },
+    { new: true } // This option returns the updated document
+  )
+  .then(updatedUser => {
+    res.status(200).json(updatedUser);
+  })
+  .catch(error => {
+    console.error('Error updating user income:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  });
+});
+
 app.get('/income', (req, res) => {
   res.send(req.user)
 })

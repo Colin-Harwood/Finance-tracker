@@ -50,11 +50,28 @@ const Income = () => {
       closeModal();
     };
 
+    const handleDelete = async (source, amount) => {
+        const response = await fetch('http://localhost:3000/income', {
+          method: 'DELETE',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ source, amount })
+        });
+      
+        const data = await response.json();
+        console.log(data);
+      };
+
+    
+
   const customStyles = {
     overlay: {
         backgroundColor: 'rgba(0, 0, 0, 0.75)',
         zIndex: 1000, // Add this line
       },
+
     content: {
       top: '50%',
       left: '50%',
@@ -77,13 +94,13 @@ const Income = () => {
             <div id="income-all" className="mx-auto lg:w-9/12 w-11/12">
                 <div className="grid grid-cols-3">
                     <div className="columns-income-head">
-                        <h3 className="px-3 py-1 text-2xl "><b>Category</b></h3>
+                        <h3 className="px-3 py-1 lg:text-2xl "><b>Category</b></h3>
                     </div>
                     <div className="columns-income-head column-middle">
-                        <h3 className="px-3 py-1 text-2xl "><b>Amount</b></h3>
+                        <h3 className="px-3 py-1 lg:text-2xl "><b>Amount</b></h3>
                     </div >
                     <div className="columns-income-head">
-                        <h3 className="px-3 py-1 text-2xl "><b>Update</b></h3>
+                        <h3 className="px-3 py-1 lg:text-2xl "><b>Update</b></h3>
                     </div>
                 </div>
                 <hr/>
@@ -96,7 +113,9 @@ const Income = () => {
                     <h3 className="px-3 py-2">{income.amount}</h3>
                     </div>
                     <div className="columns-income-head">
-                    <h3 className="px-3 py-2">Update</h3>
+                        <div className="flex flex-row justify-space items-end">
+                            <h3 className="px-3 py-2" onClick={() => handleDelete(income.source, income.amount)}><img src="/icons8-delete-48.png" width="25px"></img></h3>
+                        </div>
                     </div>
                 </div>
                 ))}
