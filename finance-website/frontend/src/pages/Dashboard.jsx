@@ -52,7 +52,7 @@ const Dashboard = () => {
           <p className="text-2xl text-center"><b>Income Sources</b></p>
           {info && (
     <>
-      <p>{info.userName}</p>
+      
       {info && info.incomes.map((income, index) => (
   <p key={index}>{`${income.source}: ${income.amount}`}</p>
 ))}
