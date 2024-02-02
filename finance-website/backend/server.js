@@ -234,8 +234,8 @@ app.post('/income', (req, res) => {
   const { incomeSource, amount, month, year } = req.body;
   const currentUsername = req.user.username;
 
-  if (!expenseSource || !amount || !month || !year) {
-    return res.status(400).json({ message: 'expense source and amount are required' });
+  if (!incomeSource || !amount || !month || !year) {
+    return res.status(400).json({ message: 'income source and amount are required' });
   }
 
   console.log('month year', month, year)
