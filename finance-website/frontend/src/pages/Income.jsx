@@ -14,6 +14,7 @@ const Income = () => {
     const [info, setInfo] = useState(null);
     const [showEditForm, setShowEditForm] = useState(false);
     const [currentIncome, setCurrentIncome] = useState(null);
+    const [date, setDate] = useState('');
 
     useEffect(() => {
         fetch('http://localhost:3000/info', {
@@ -65,22 +66,7 @@ const Income = () => {
         const data = await response.json();
         console.log(data);
       };
-
-    const handleEdit = async (source, amount) => {
-      const response = await fetch('http://localhost:3000/income', {
-        method: 'PUT',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ source, amount })
-      });
-
-      const data = await response.json();
-      console.log(data);
-      };
     
-
   const customStyles = {
     overlay: {
         backgroundColor: 'rgba(0, 0, 0, 0.75)',
@@ -129,6 +115,10 @@ const Income = () => {
         <div className="p-10">
             <div id="income-head" className="flex justify-center lg:text-7xl text-5xl">
                 <h1 className="">Income Sources</h1>
+            </div>
+            <div className="mx-auto flex justify-center items-center lg:w-1/3 w-9/12" id="dateIncome">
+                <h1 className="lg:text-5xl text-3xl">Date: </h1>
+                <input type="month" className="ml-4" onChange={(e) => setDate(e.target.value)} />
             </div>
             <div id="income-all" className="mx-auto lg:w-9/12 w-11/12">
                 <div className="grid grid-cols-3">
