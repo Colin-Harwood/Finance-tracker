@@ -270,8 +270,6 @@ app.put('/income', async (req, res) => {
   try {
     const { incomeSource, amount } = req.body;
 
-    console.log(amount)
-
     if (!incomeSource || !amount) {
       return res.status(400).json({ message: 'Income source and amount are required' });
     }
@@ -283,22 +281,21 @@ app.put('/income', async (req, res) => {
     }
 
     // Find the income item
-    const item = user.incomes.find(income => income.source.toLowerCase() === incomeSource.toLowerCase());
-    console.log(user)
-    console.log(item)
-    if (!item) {
+    const itemIndex = user.incomes.findIndex(income => income.source.toLowerCase() === incomeSource.toLowerCase());
+    if (itemIndex === -1) {
       return res.status(404).json({ message: 'Income item not found' });
     }
 
     // Update the item
-    item.amount = amount;
+    user.incomes[itemIndex].amount = amount;
 
-    console.log(item.amount)
+    // Mark the incomes field as modified
+    user.markModified('incomes');
 
     // Save the user
     await user.save();
 
-    res.json({ message: 'Income item updated successfully' });
+    res.json({ message: 'Income item updated successfully'});
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error' });

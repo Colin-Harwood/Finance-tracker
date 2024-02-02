@@ -113,9 +113,9 @@ const Income = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ incomeSource: currentIncome.source, amount: currentIncome.amount })
+      body: JSON.stringify({ incomeSource: currentIncome.source, amount: amount })
     });
-  
+    console.log(amount);
     const data = await response.json();
     console.log(data);
     setShowEditForm(false);
