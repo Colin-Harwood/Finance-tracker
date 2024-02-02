@@ -12,6 +12,8 @@ const Income = () => {
     const [incomeSource, setIncomeSource] = useState('');
     const [amount, setAmount] = useState('');
     const [info, setInfo] = useState(null);
+    const [showEditForm, setShowEditForm] = useState(false);
+    const [currentIncome, setCurrentIncome] = useState(null);
 
     useEffect(() => {
         fetch('http://localhost:3000/info', {
@@ -95,6 +97,30 @@ const Income = () => {
     }
   };
 
+  const handleEditClick = (income) => {
+    setIncomeSource(income.source);
+    setAmount(income.amount);
+    setCurrentIncome(income);
+    setShowEditForm(true);
+  };
+
+  const handleEditSubmit = async (event) => {
+    event.preventDefault();
+  
+    const response = await fetch('http://localhost:3000/income', {
+      method: 'PUT',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ incomeSource: currentIncome.source, amount: currentIncome.amount })
+    });
+  
+    const data = await response.json();
+    console.log(data);
+    setShowEditForm(false);
+  };
+
 
     return (
         <>
@@ -118,6 +144,7 @@ const Income = () => {
                 </div>
                 <hr/>
                 {info && info.incomes.map((income, index) => (
+                  <>
                 <div key={index} className="grid grid-cols-3">
                     <div className="columns-income-head">
                     <h3 className="px-3 py-2">{income.source}</h3>
@@ -128,7 +155,7 @@ const Income = () => {
                     <div className="columns-income-head">
                       <div className="flex flex-row justify-evenly">
                         <div className="flex flex-row justify-space items-end">
-                            <h3 className="px-3 py-2" onClick={() => handleEdit(income.source, income.amount)}><img src="icons8-edit-50.png" width="25px"></img></h3>
+                            <h3 className="px-3 py-2"  onClick={() => handleEditClick(income)}><img src="icons8-edit-50.png" width="25px"></img></h3>
                         </div>
                         <div className="flex flex-row justify-space items-end">
                             <h3 className="px-3 py-2" onClick={() => handleDelete(income.source, income.amount)}><img src="/icons8-delete-48.png" width="25px"></img></h3>
@@ -136,6 +163,25 @@ const Income = () => {
                       </div>
                     </div>
                 </div>
+                <Modal
+                isOpen={showEditForm}
+                onRequestClose={() => setShowEditForm(false)}
+                contentLabel="Edit Income Source"
+                className="Modal flex flex-col items-center justify-center backdrop-brightness-50 h-screen w-screen"
+                overlayClassName="Overlay"
+                style={customStyles}
+              >
+                
+                <form onSubmit={(event) => handleEditSubmit(event)} className="h-96 flex flex-col items-center justify-center">
+                  <button onClick={() => setShowEditForm(false)} className="mb-10">Close</button>
+                  <title>Edit Income Source</title>
+                  <label htmlFor="Amount">Amount</label>
+                  <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount" />
+                  <button type="submit" id="submit">Change</button>
+                  
+                </form>
+              </Modal>
+              </>
                 ))}
                 <hr/>
                 <div className="flex flex-row justify-end items-end">
@@ -143,6 +189,7 @@ const Income = () => {
                     <img src="/icons8-plus-96.png" width="65px" alt="plus"></img>
                 </button>
                 </div>
+                
                 <Modal
                 isOpen={showForm}
                 onRequestClose={closeModal}

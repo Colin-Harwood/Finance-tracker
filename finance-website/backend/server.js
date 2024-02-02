@@ -270,20 +270,30 @@ app.put('/income', async (req, res) => {
   try {
     const { incomeSource, amount } = req.body;
 
+    console.log(amount)
+
+    if (!incomeSource || !amount) {
+      return res.status(400).json({ message: 'Income source and amount are required' });
+    }
+
     // Use the authenticated user
-    const user = req.user;
+    const user = await allInfo.findOne({ userName: req.user.username });
     if (!user) {
       return res.status(401).json({ message: 'User not authenticated' });
     }
 
     // Find the income item
-    const item = user.incomes.find(income => income.source === incomeSource);
+    const item = user.incomes.find(income => income.source.toLowerCase() === incomeSource.toLowerCase());
+    console.log(user)
+    console.log(item)
     if (!item) {
       return res.status(404).json({ message: 'Income item not found' });
     }
 
     // Update the item
     item.amount = amount;
+
+    console.log(item.amount)
 
     // Save the user
     await user.save();
