@@ -15,6 +15,8 @@ const Income = () => {
     const [showEditForm, setShowEditForm] = useState(false);
     const [currentIncome, setCurrentIncome] = useState(null);
     const [date, setDate] = useState('');
+    const month = date.split('-')[1];
+    const year = date.split('-')[0];
 
     useEffect(() => {
         fetch('http://localhost:3000/info', {
@@ -43,7 +45,7 @@ const Income = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ incomeSource, amount }),
+        body: JSON.stringify({ incomeSource, amount, month: month, year: year}),
         
       });
       
@@ -60,7 +62,7 @@ const Income = () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ source, amount })
+          body: JSON.stringify({ source, amount,month: month,year: year})
         });
       
         const data = await response.json();
@@ -99,7 +101,7 @@ const Income = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ incomeSource: currentIncome.source, amount: amount })
+      body: JSON.stringify({ incomeSource: currentIncome.source, amount: amount, month: month, year: year})
     });
     console.log(amount);
     const data = await response.json();
@@ -113,12 +115,12 @@ const Income = () => {
         <Navbar/>
         < Sidebar />
         <div className="p-10">
-            <div id="income-head" className="flex justify-center lg:text-7xl text-5xl">
+            <div id="income-head" className="flex justify-center lg:text-7xl text-5xl mx-auto w-screen">
                 <h1 className="">Income Sources</h1>
             </div>
             <div className="mx-auto flex justify-center items-center lg:w-1/3 w-9/12" id="dateIncome">
                 <h1 className="lg:text-5xl text-3xl">Date: </h1>
-                <input type="month" className="ml-4" onChange={(e) => setDate(e.target.value)} />
+                <input type="month" className="ml-4 mt-2" onChange={(e) => setDate(e.target.value)}/>
             </div>
             <div id="income-all" className="mx-auto lg:w-9/12 w-11/12">
                 <div className="grid grid-cols-3">
@@ -133,7 +135,9 @@ const Income = () => {
                     </div>
                 </div>
                 <hr/>
-                {info && info.incomes.map((income, index) => (
+                {info && info.incomes
+                .filter(income => income.year === year && income.month === month)
+                .map((income, index) => (
                   <>
                 <div key={index} className="grid grid-cols-3">
                     <div className="columns-income-head">

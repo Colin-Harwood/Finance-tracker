@@ -231,12 +231,17 @@ app.get('/info', (req, res, next) => {
 
 
 app.post('/income', (req, res) => {
-  const { incomeSource, amount } = req.body;
+  const { incomeSource, amount, month, year } = req.body;
   const currentUsername = req.user.username;
 
+  if (!expenseSource || !amount || !month || !year) {
+    return res.status(400).json({ message: 'expense source and amount are required' });
+  }
+
+  console.log('month year', month, year)
   allInfo.findOneAndUpdate(
     { userName: currentUsername },
-    { $push: { incomes: { source: incomeSource, amount: amount } } },
+    { $push: { incomes: { source: incomeSource, amount: amount, month: month, year: year } } },
     { new: true } // This option returns the updated document
   )
   .then(updatedUser => {
@@ -344,9 +349,9 @@ app.delete('/expense', (req, res) => {
 
 app.put('/expense', async (req, res) => {
   try {
-    const { expenseSource, amount } = req.body;
+    const { expenseSource, amount, month, year } = req.body;
 
-    if (!expenseSource || !amount) {
+    if (!expenseSource || !amount || !month || !year) {
       return res.status(400).json({ message: 'expense source and amount are required' });
     }
 
