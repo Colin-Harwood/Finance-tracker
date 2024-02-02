@@ -64,6 +64,19 @@ const Income = () => {
         console.log(data);
       };
 
+    const handleEdit = async (source, amount) => {
+      const response = await fetch('http://localhost:3000/income', {
+        method: 'PUT',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ source, amount })
+      });
+
+      const data = await response.json();
+      console.log(data);
+      };
     
 
   const customStyles = {
@@ -113,9 +126,14 @@ const Income = () => {
                     <h3 className="px-3 py-2">{income.amount}</h3>
                     </div>
                     <div className="columns-income-head">
+                      <div className="flex flex-row justify-evenly">
+                        <div className="flex flex-row justify-space items-end">
+                            <h3 className="px-3 py-2" onClick={() => handleEdit(income.source, income.amount)}><img src="icons8-edit-50.png" width="25px"></img></h3>
+                        </div>
                         <div className="flex flex-row justify-space items-end">
                             <h3 className="px-3 py-2" onClick={() => handleDelete(income.source, income.amount)}><img src="/icons8-delete-48.png" width="25px"></img></h3>
                         </div>
+                      </div>
                     </div>
                 </div>
                 ))}

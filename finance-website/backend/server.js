@@ -266,6 +266,35 @@ app.delete('/income', (req, res) => {
   });
 });
 
+app.put('/income', async (req, res) => {
+  try {
+    const { incomeSource, amount } = req.body;
+
+    // Use the authenticated user
+    const user = req.user;
+    if (!user) {
+      return res.status(401).json({ message: 'User not authenticated' });
+    }
+
+    // Find the income item
+    const item = user.incomes.find(income => income.source === incomeSource);
+    if (!item) {
+      return res.status(404).json({ message: 'Income item not found' });
+    }
+
+    // Update the item
+    item.amount = amount;
+
+    // Save the user
+    await user.save();
+
+    res.json({ message: 'Income item updated successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 app.get('/income', (req, res) => {
   res.send(req.user)
 })
