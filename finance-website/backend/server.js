@@ -305,3 +305,75 @@ app.put('/income', async (req, res) => {
 app.get('/income', (req, res) => {
   res.send(req.user)
 })
+
+app.post('/expense', (req, res) => {
+  const { expenseSource, amount } = req.body;
+  const currentUsername = req.user.username;
+
+  allInfo.findOneAndUpdate(
+    { userName: currentUsername },
+    { $push: { expenses: { source: expenseSource, amount: amount } } },
+    { new: true } // This option returns the updated document
+  )
+  .then(updatedUser => {
+    res.status(200).json(updatedUser);
+  })
+  .catch(error => {
+    console.error('Error updating user income:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  });
+});
+
+app.delete('/expense', (req, res) => {
+  const { expenseSource, amount } = req.body;
+  const currentUsername = req.user.username;
+
+  allInfo.findOneAndUpdate(
+    { userName: currentUsername },
+    { $pull: { expenses: { source: expenseSource, amount: amount } } },
+    { new: true } // This option returns the updated document
+  )
+  .then(updatedUser => {
+    res.status(200).json(updatedUser);
+  })
+  .catch(error => {
+    console.error('Error updating user expense:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  });
+});
+
+app.put('/expense', async (req, res) => {
+  try {
+    const { expenseSource, amount } = req.body;
+
+    if (!expenseSource || !amount) {
+      return res.status(400).json({ message: 'expense source and amount are required' });
+    }
+
+    // Use the authenticated user
+    const user = await allInfo.findOne({ userName: req.user.username });
+    if (!user) {
+      return res.status(401).json({ message: 'User not authenticated' });
+    }
+
+    // Find the expense item
+    const itemIndex = user.expenses.findIndex(expense => expense.source.toLowerCase() === expenseSource.toLowerCase());
+    if (itemIndex === -1) {
+      return res.status(404).json({ message: 'expense item not found' });
+    }
+
+    // Update the item
+    user.expenses[itemIndex].amount = amount;
+
+    // Mark the expenses field as modified
+    user.markModified('expenses');
+
+    // Save the user
+    await user.save();
+
+    res.json({ message: 'expense item updated successfully'});
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
