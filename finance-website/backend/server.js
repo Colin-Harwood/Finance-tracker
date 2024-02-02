@@ -254,12 +254,12 @@ app.post('/income', (req, res) => {
 });
 
 app.delete('/income', (req, res) => {
-  const { incomeSource, amount } = req.body;
+  const { incomeSource, amount, month, year } = req.body;
   const currentUsername = req.user.username;
 
   allInfo.findOneAndUpdate(
     { userName: currentUsername },
-    { $pull: { incomes: { source: incomeSource, amount: amount } } },
+    { $pull: { incomes: { source: incomeSource, amount: amount, month: month, year: year } } },
     { new: true } // This option returns the updated document
   )
   .then(updatedUser => {
