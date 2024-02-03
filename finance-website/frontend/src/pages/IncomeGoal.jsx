@@ -51,7 +51,7 @@ const IncomeGoal = () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ incomeGoal }),
+          body: JSON.stringify({incomeGoal}),
           
         });
         

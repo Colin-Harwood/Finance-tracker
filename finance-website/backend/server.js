@@ -390,6 +390,7 @@ app.put('/expense', async (req, res) => {
 
 app.post('/incomeGoal', async (req, res) => {
   const { incomeGoal } = req.body;
+  const currentUsername = req.user.username;
 
   // Find the income goal document and update it
   // This assumes there's only one income goal document in the database
