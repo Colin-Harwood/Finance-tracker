@@ -387,3 +387,17 @@ app.put('/expense', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
+app.post('/incomeGoal', async (req, res) => {
+  const { incomeGoal } = req.body;
+
+  // Find the income goal document and update it
+  // This assumes there's only one income goal document in the database
+  const result = await allInfo.findOneAndUpdate({ userName: currentUsername }, { incomeGoal: incomeGoal }, { new: true });
+
+  if (result) {
+    res.json({ success: true, message: 'Income goal updated successfully' });
+  } else {
+    res.json({ success: false, message: 'Failed to update income goal' });
+  }
+});

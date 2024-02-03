@@ -31,6 +31,28 @@
     border-radius: 10px;
 }
 
+#editGoal {
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100px;
+  }
+  
+  #editGoal:hover {
+    background-color: #6365f1e0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100px;
+  }
+
 @media (max-width: 728px) {
     .skill-div {
         background-color: #f2f2f2;
