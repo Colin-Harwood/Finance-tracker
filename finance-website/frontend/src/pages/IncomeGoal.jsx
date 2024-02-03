@@ -1,9 +1,81 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from '../components/Navbar.jsx';
 import './IncomeGoal.css';
 import Sidebar from '../components/Sidebar.jsx';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 const IncomeGoal = () => {
+    const [showModal, setShowModal] = useState(false);
+    const [incomeGoal, setIncomeGoal] = useState('');
+    const [info, setInfo] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/info', {
+                    method: 'GET',
+                    credentials: 'include'
+                  })
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                setInfo(data);
+                console.log(data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+    
+        fetchData();
+    }, []);
+
+    const incomeGoalValue = info ? info.incomeGoal : '';
+
+    const openModal = () => {
+      setShowModal(true);
+    };
+
+    const closeModal = () => {
+      setShowModal(false);
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+    
+        const response = await fetch('http://localhost:3000/incomeGoal', {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ incomeGoal }),
+          
+        });
+        
+        const data = await response.json();
+        console.log(data);
+        closeModal();
+      };
+
+      const customStyles = {
+        overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+            zIndex: 1000, // Add this line
+          },
+    
+        content: {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)'
+        }
+      };
+
     return (
         <>
             <Navbar />
@@ -20,15 +92,38 @@ const IncomeGoal = () => {
                                     <h1 className="text-xl lg:text-4xl">Percent%</h1>
                                 </div>
                                 <div>
-                                    <h1 className="text-xl lg:text-4xl">Amount/Total</h1>
+                                    <h1 className="text-xl lg:text-4xl">Amount/{incomeGoalValue}</h1>
                                 </div>
                             </div>
                             <div className="skill-bar ">
                                 <div className="skill-level" style={{ width: '87%' }}></div>
                             </div>
-                            <div className="mt-5" id="editGoal">
-                                <button>Change</button>
+                            <div className="mt-5" id="editGoal" >
+                                <button onClick={openModal}>Change Goal</button>
                             </div>
+                            <Modal
+                            isOpen={showModal}
+                            onRequestClose={closeModal}
+                            contentLabel="Add Income Source"
+                            className="Modal flex flex-col items-center justify-center backdrop-brightness-50 h-screen w-screen"
+                            overlayClassName="Overlay"
+                            style={customStyles}
+                            >
+                            
+                            <form onSubmit={handleSubmit} className="h-96 flex flex-col items-center justify-center">
+                                <div className="flex flex-row justify-end w-full mr-3 px-5 mb-5" style={{marginTop: '-90px'}}>
+                                    <button onClick={closeModal} class="close-income-modal right-0">Close</button>
+                                </div>
+                                <label htmlFor="amount">Amount</label>
+                                <input
+                                type="number"
+                                value={incomeGoal}
+                                onChange={(e) => setIncomeGoal(e.target.value)}
+                                placeholder="Amount"
+                                />
+                                <button type="submit" id="submit">Change</button>
+                            </form>
+                            </Modal>
                         </div>
                     </div>
                 </div>
