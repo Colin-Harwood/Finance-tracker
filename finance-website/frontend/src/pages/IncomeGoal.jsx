@@ -60,6 +60,17 @@ const IncomeGoal = () => {
         closeModal();
       };
 
+      const date = new Date();
+      const currentMonth = date.getMonth() + 1; // getMonth() returns a zero-based value (0-11), so we add 1 to get the correct month number.
+
+      let totalIncomeThisMonth = 0;
+
+      // Check if info and info.incomes are not null before trying to access its properties
+      if (info && info.incomes) {
+        const currentMonthIncomes = info.incomes.filter(income => parseInt(income.month) === currentMonth);
+        totalIncomeThisMonth = currentMonthIncomes.reduce((total, income) => total + parseFloat(income.amount), 0);
+      }
+
       const customStyles = {
         overlay: {
             backgroundColor: 'rgba(0, 0, 0, 0.75)',
@@ -92,7 +103,7 @@ const IncomeGoal = () => {
                                     <h1 className="text-xl lg:text-4xl">Percent%</h1>
                                 </div>
                                 <div>
-                                    <h1 className="text-xl lg:text-4xl">Amount/{incomeGoalValue}</h1>
+                                    <h1 className="text-xl lg:text-4xl">{totalIncomeThisMonth}/{incomeGoalValue}</h1>
                                 </div>
                             </div>
                             <div className="skill-bar ">
