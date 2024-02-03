@@ -312,30 +312,35 @@ app.get('/income', (req, res) => {
 })
 
 app.post('/expense', (req, res) => {
-  const { expenseSource, amount } = req.body;
+  const { expenseSource, amount, month, year } = req.body;
   const currentUsername = req.user.username;
 
+  if (!expenseSource || !amount || !month || !year) {
+    return res.status(400).json({ message: 'expense source and amount are required' });
+  }
+
+  console.log('month year', month, year)
   allInfo.findOneAndUpdate(
     { userName: currentUsername },
-    { $push: { expenses: { source: expenseSource, amount: amount } } },
+    { $push: { expenses: { source: expenseSource, amount: amount, month: month, year: year } } },
     { new: true } // This option returns the updated document
   )
   .then(updatedUser => {
     res.status(200).json(updatedUser);
   })
   .catch(error => {
-    console.error('Error updating user income:', error);
+    console.error('Error updating user expense:', error);
     res.status(500).json({ error: 'Internal server error' });
   });
 });
 
 app.delete('/expense', (req, res) => {
-  const { expenseSource, amount } = req.body;
+  const { expenseSource, amount, month, year } = req.body;
   const currentUsername = req.user.username;
 
   allInfo.findOneAndUpdate(
     { userName: currentUsername },
-    { $pull: { expenses: { source: expenseSource, amount: amount } } },
+    { $pull: { expenses: { source: expenseSource, amount: amount, month: month, year: year } } },
     { new: true } // This option returns the updated document
   )
   .then(updatedUser => {

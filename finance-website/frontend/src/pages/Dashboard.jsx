@@ -63,6 +63,9 @@ const Dashboard = () => {
         
         <div className="lg:col-span-3 md:col-span-5 col-span-11 column">
           <p className="text-2xl text-center"><b>Spending</b></p>
+          {info && info.expenses.map((income, index) => (
+  <p key={index}>{`${income.source}: ${income.amount}`}</p>
+))}
         </div>
 
         
