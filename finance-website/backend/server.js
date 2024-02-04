@@ -404,3 +404,85 @@ app.post('/incomeGoal', async (req, res) => {
     res.json({ success: false, message: 'Failed to update income goal' });
   }
 });
+
+app.post('/subscription', (req, res) => {
+  const { subscriptionSource, amount, month, year } = req.body;
+  const currentUsername = req.user.username;
+
+  if (!subscriptionSource || !amount || !month || !year) {
+    return res.status(400).json({ message: 'subscription source and amount are required' });
+  }
+
+  console.log('month year', month, year)
+  allInfo.findOneAndUpdate(
+    { userName: currentUsername },
+    { $push: { subscriptions: { source: subscriptionSource, amount: amount, month: month, year: year } } },
+    { new: true } // This option returns the updated document
+  )
+  .then(updatedUser => {
+    res.status(200).json(updatedUser);
+  })
+  .catch(error => {
+    console.error('Error updating user subscription:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  });
+});
+
+app.delete('/subscription', (req, res) => {
+  const { subscriptionSource, amount, month, year } = req.body;
+  const currentUsername = req.user.username;
+
+  allInfo.findOneAndUpdate(
+    { userName: currentUsername },
+    { $pull: { subscriptions: { source: subscriptionSource, amount: amount, month: month, year: year } } },
+    { new: true } // This option returns the updated document
+  )
+  .then(updatedUser => {
+    res.status(200).json(updatedUser);
+  })
+  .catch(error => {
+    console.error('Error updating user subscription:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  });
+});
+
+app.put('/subscription', async (req, res) => {
+  try {
+    const { subscriptionSource, amount, month, year } = req.body;
+
+    console.log('subscription source', subscriptionSource)
+    console.log('amount', amount)
+    console.log('month', month)
+    console.log('year', year)
+
+    if (!subscriptionSource || !amount || !month || !year) {
+      return res.status(400).json({ message: 'subscription source and amount are required' });
+    }
+
+    // Use the authenticated user
+    const user = await allInfo.findOne({ userName: req.user.username });
+    if (!user) {
+      return res.status(401).json({ message: 'User not authenticated' });
+    }
+
+    // Find the subscription item
+    const itemIndex = user.subscriptions.findIndex(subscription => subscription.source === subscriptionSource);
+    if (itemIndex === -1) {
+      return res.status(404).json({ message: 'subscription item not found' });
+    }
+
+    // Update the item
+    user.subscriptions[itemIndex].amount = amount;
+
+    // Mark the subscriptions field as modified
+    user.markModified('subscriptions');
+
+    // Save the user
+    await user.save();
+
+    res.json({ message: 'subscription item updated successfully'});
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
