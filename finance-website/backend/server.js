@@ -159,9 +159,6 @@ app.post('/signup', (req, res) => {
   
     const userInfo = {
       userName: username,
-      incomes: {},
-      expenses: {},
-      subscriptions: {},
       incomeGoal: 0,
     }
 
@@ -286,7 +283,7 @@ app.put('/income', async (req, res) => {
     }
 
     // Find the income item
-    const itemIndex = user.incomes.findIndex(income => income.source.toLowerCase() === incomeSource.toLowerCase());
+    const itemIndex = user.incomes.findIndex(income => income.source === incomeSource);
     if (itemIndex === -1) {
       return res.status(404).json({ message: 'Income item not found' });
     }
@@ -356,6 +353,11 @@ app.put('/expense', async (req, res) => {
   try {
     const { expenseSource, amount, month, year } = req.body;
 
+    console.log('expense source', expenseSource)
+    console.log('amount', amount)
+    console.log('month', month)
+    console.log('year', year)
+
     if (!expenseSource || !amount || !month || !year) {
       return res.status(400).json({ message: 'expense source and amount are required' });
     }
@@ -367,7 +369,7 @@ app.put('/expense', async (req, res) => {
     }
 
     // Find the expense item
-    const itemIndex = user.expenses.findIndex(expense => expense.source.toLowerCase() === expenseSource.toLowerCase());
+    const itemIndex = user.expenses.findIndex(expense => expense.source === expenseSource);
     if (itemIndex === -1) {
       return res.status(404).json({ message: 'expense item not found' });
     }

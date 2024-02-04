@@ -103,7 +103,8 @@ const Expenses = () => {
       },
       body: JSON.stringify({ expenseSource: currentExpense.source, amount: amount, month: month, year: year})
     });
-    console.log(amount);
+    console.log('amount submitted', amount);
+    console.log('what submitted', currentExpense.source);
     const data = await response.json();
     console.log(data);
     setShowEditForm(false);
@@ -200,14 +201,14 @@ const Expenses = () => {
                     <label htmlFor="category">Category</label>
                     <input
               type="text"
-              value={expenseSource}
+              
               onChange={(e) => setExpenseSource(e.target.value)}
               placeholder="Expense Source"
             />
                     <label htmlFor="amount">Amount</label>
                     <input
               type="number"
-              value={amount}
+              
               onChange={(e) => setAmount(e.target.value)}
               placeholder="Amount"
             />
