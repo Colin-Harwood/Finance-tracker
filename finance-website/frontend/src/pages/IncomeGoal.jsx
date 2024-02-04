@@ -11,6 +11,7 @@ const IncomeGoal = () => {
     const [incomeGoal, setIncomeGoal] = useState('');
     const [info, setInfo] = useState(null);
 
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -87,6 +88,11 @@ const IncomeGoal = () => {
         }
       };
 
+    let percent = (totalIncomeThisMonth / incomeGoalValue) * 100;
+    let percentRounded = Math.min(percent, 100);
+    percent = Math.round(percent);
+
+
     return (
         <>
             <Navbar />
@@ -100,14 +106,14 @@ const IncomeGoal = () => {
                         <div className="skill px-4 flrx flex-col h-40">
                             <div className="flex flex-row justify-between items-center text-start mb-6 w-11/12">
                                 <div>
-                                    <h1 className="text-xl lg:text-4xl">Percent%</h1>
+                                    <h1 className="text-xl lg:text-4xl">{percent}%</h1>
                                 </div>
                                 <div>
                                     <h1 className="text-xl lg:text-4xl">{totalIncomeThisMonth}/{incomeGoalValue}</h1>
                                 </div>
                             </div>
                             <div className="skill-bar ">
-                                <div className="skill-level" style={{ width: '87%' }}></div>
+                                <div className="skill-level" style={{ width: percentRounded + '%' }}></div>
                             </div>
                             <div className="mt-5" id="editGoal" >
                                 <button onClick={openModal}>Change Goal</button>
