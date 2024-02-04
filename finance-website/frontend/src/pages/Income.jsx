@@ -18,6 +18,9 @@ const Income = () => {
     const month = date.split('-')[1];
     const year = date.split('-')[0];
 
+    console.log(typeof(month))
+    console.log(typeof(year))
+
     useEffect(() => {
         fetch('http://localhost:3000/info', {
           method: 'GET',
