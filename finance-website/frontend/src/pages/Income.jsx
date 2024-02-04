@@ -18,9 +18,6 @@ const Income = () => {
     const month = date.split('-')[1];
     const year = date.split('-')[0];
 
-    console.log(typeof(month))
-    console.log(typeof(year))
-
     useEffect(() => {
         fetch('http://localhost:3000/info', {
           method: 'GET',
@@ -52,7 +49,6 @@ const Income = () => {
         
       });
       
-      console.log(JSON.stringify({ incomeSource, amount }));
       const data = await response.json();
       console.log(data);
       closeModal();
@@ -106,7 +102,6 @@ const Income = () => {
       },
       body: JSON.stringify({ incomeSource: currentIncome.source, amount: amount, month: month, year: year})
     });
-    console.log(amount);
     const data = await response.json();
     console.log(data);
     setShowEditForm(false);

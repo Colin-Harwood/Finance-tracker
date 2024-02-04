@@ -49,7 +49,6 @@ const Expenses = () => {
         
       });
       
-      console.log(JSON.stringify({ expenseSource, amount }));
       const data = await response.json();
       console.log(data);
       closeModal();
@@ -103,8 +102,6 @@ const Expenses = () => {
       },
       body: JSON.stringify({ expenseSource: currentExpense.source, amount: amount, month: month, year: year})
     });
-    console.log('amount submitted', amount);
-    console.log('what submitted', currentExpense.source);
     const data = await response.json();
     console.log(data);
     setShowEditForm(false);
