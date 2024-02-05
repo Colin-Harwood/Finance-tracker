@@ -98,8 +98,9 @@ const IncomeGoal = () => {
             <Navbar />
             <Sidebar />
             <div className="p-10">
-                <div id="income-head" className="flex justify-center lg:text-7xl text-5xl">
-                    <h1 className="">Income Goal</h1>
+                <div id="income-head" className="flex flex-col justify-center items-center lg:text-7xl text-5xl">
+                    <h1 className="">Income Goal:</h1>
+                    <h1 className="">{totalIncomeThisMonth}/{incomeGoalValue}</h1>
                 </div>
                 <div className="flex justify-center items-center mt-10 h-96">
                     <div className="flex flex-col content-center rounded-md skill-div">
@@ -109,15 +110,15 @@ const IncomeGoal = () => {
                                     <h1 className="text-xl lg:text-4xl">{percent}%</h1>
                                 </div>
                                 <div>
-                                    <h1 className="text-xl lg:text-4xl">{totalIncomeThisMonth}/{incomeGoalValue}</h1>
+                                <div className="mt-5 text-center" id="editGoal" >
+                                <button onClick={openModal} width="90px">Change Goal</button>
+                            </div>
                                 </div>
                             </div>
-                            <div className="skill-bar ">
+                            <div className="skill-bar " style={{ height: '30px'}}>
                                 <div className="skill-level" style={{ width: percentRounded + '%' }}></div>
                             </div>
-                            <div className="mt-5" id="editGoal" >
-                                <button onClick={openModal}>Change Goal</button>
-                            </div>
+                            
                             <Modal
                             isOpen={showModal}
                             onRequestClose={closeModal}
