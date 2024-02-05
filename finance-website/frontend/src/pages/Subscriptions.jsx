@@ -45,7 +45,7 @@ const Subscriptions = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ subscriptionSource, amount, month: month, year: year}),
+        body: JSON.stringify({ subscriptionSource, amount}),
         
       });
       
@@ -61,7 +61,7 @@ const Subscriptions = () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ source, amount,month: month,year: year})
+          body: JSON.stringify({ source, amount})
         });
       
         const data = await response.json();
@@ -100,7 +100,7 @@ const Subscriptions = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ subscriptionSource: currentSubscription.source, amount: amount, month: month, year: year})
+      body: JSON.stringify({ subscriptionSource: currentSubscription.source, amount: amount})
     });
     const data = await response.json();
     console.log(data);
@@ -134,7 +134,6 @@ const Subscriptions = () => {
                 </div>
                 <hr/>
                 {info && info.subscriptions
-                .filter(subscription => subscription.year === year && subscription.month === month)
                 .map((subscription, index) => (
                   <>
                 <div key={index} className="grid grid-cols-3">

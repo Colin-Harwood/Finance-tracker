@@ -406,17 +406,16 @@ app.post('/incomeGoal', async (req, res) => {
 });
 
 app.post('/subscription', (req, res) => {
-  const { subscriptionSource, amount, month, year } = req.body;
+  const { subscriptionSource, amount} = req.body;
   const currentUsername = req.user.username;
 
-  if (!subscriptionSource || !amount || !month || !year) {
+  if (!subscriptionSource || !amount) {
     return res.status(400).json({ message: 'subscription source and amount are required' });
   }
 
-  console.log('month year', month, year)
   allInfo.findOneAndUpdate(
     { userName: currentUsername },
-    { $push: { subscriptions: { source: subscriptionSource, amount: amount, month: month, year: year } } },
+    { $push: { subscriptions: { source: subscriptionSource, amount: amount} } },
     { new: true } // This option returns the updated document
   )
   .then(updatedUser => {
@@ -429,12 +428,13 @@ app.post('/subscription', (req, res) => {
 });
 
 app.delete('/subscription', (req, res) => {
-  const { subscriptionSource, amount, month, year } = req.body;
+  const { source, amount} = req.body;
   const currentUsername = req.user.username;
+  console.log('subscription source', source)
 
   allInfo.findOneAndUpdate(
     { userName: currentUsername },
-    { $pull: { subscriptions: { source: subscriptionSource, amount: amount, month: month, year: year } } },
+    { $pull: { subscriptions: { source: source, amount: amount } } },
     { new: true } // This option returns the updated document
   )
   .then(updatedUser => {
@@ -448,14 +448,12 @@ app.delete('/subscription', (req, res) => {
 
 app.put('/subscription', async (req, res) => {
   try {
-    const { subscriptionSource, amount, month, year } = req.body;
+    const { subscriptionSource, amount} = req.body;
 
     console.log('subscription source', subscriptionSource)
     console.log('amount', amount)
-    console.log('month', month)
-    console.log('year', year)
 
-    if (!subscriptionSource || !amount || !month || !year) {
+    if (!subscriptionSource || !amount) {
       return res.status(400).json({ message: 'subscription source and amount are required' });
     }
 

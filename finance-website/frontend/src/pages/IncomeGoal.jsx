@@ -103,7 +103,7 @@ const IncomeGoal = () => {
                 </div>
                 <div className="flex justify-center items-center mt-10 h-96">
                     <div className="flex flex-col content-center rounded-md skill-div">
-                        <div className="skill px-4 flrx flex-col h-40">
+                        <div className="skill px-4 flrx flex-col lg:h-44 h-40">
                             <div className="flex flex-row justify-between items-center text-start mb-6 w-11/12">
                                 <div>
                                     <h1 className="text-xl lg:text-4xl">{percent}%</h1>
