@@ -17,6 +17,7 @@ const Subscriptions = () => {
     const [date, setDate] = useState('');
     const month = date.split('-')[1];
     const year = date.split('-')[0];
+    const brightness = 50;
 
     useEffect(() => {
         fetch('http://localhost:3000/info', {
@@ -113,13 +114,10 @@ const Subscriptions = () => {
         <Navbar/>
         < Sidebar />
         <div className="p-10">
-            <div id="subscription-head" className="flex justify-center lg:text-7xl text-5xl mx-auto w-screen">
+            <div id="subscription-head" className="flex justify-center lg:text-7xl text-5xl mx-auto w-screen text-center">
                 <h1 className="">Subscription Sources</h1>
             </div>
-            <div className="mx-auto flex justify-center items-center lg:w-1/3 w-9/12" id="dateSubscription">
-                <h1 className="lg:text-5xl text-3xl">Date: </h1>
-                <input type="month" className="ml-4 mt-2" onChange={(e) => setDate(e.target.value)}/>
-            </div>
+            
             <div id="subscription-all" className="mx-auto lg:w-9/12 w-11/12">
                 <div className="grid grid-cols-3">
                     <div className="columns-subscription-head">
@@ -154,13 +152,18 @@ const Subscriptions = () => {
                       </div>
                     </div>
                 </div>
+                
+              </>
+
+                ))}
                 <Modal
                 isOpen={showEditForm}
                 onRequestClose={() => setShowEditForm(false)}
                 contentLabel="Edit Subscription Source"
-                className="Modal flex flex-col items-center justify-center backdrop-brightness-50 h-screen w-screen"
+                className="Modal flex flex-col items-center justify-center h-screen w-screen"
                 overlayClassName="Overlay"
                 style={customStyles}
+                id="subscriptionEditModal"
               >
                 
                 <form onSubmit={(event) => handleEditSubmit(event)} className="h-96 flex flex-col items-center justify-center">
@@ -172,8 +175,6 @@ const Subscriptions = () => {
                   
                 </form>
               </Modal>
-              </>
-                ))}
                 <hr/>
                 <div className="flex flex-row justify-end items-end">
                 <button onClick={handleAddClick} id="addButton">
