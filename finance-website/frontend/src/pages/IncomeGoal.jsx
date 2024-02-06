@@ -172,8 +172,11 @@ const IncomeGoal = () => {
                         </div>
                     </div>
                 </div>
+                <div className="flex flex-col w-11/12 mx-auto justify-center items-center text-center">
+                    <Bar data={data} options={options} />
+                </div>
             </div>
-            <Bar data={data} options={options} />
+            
         </>
     );
 };
