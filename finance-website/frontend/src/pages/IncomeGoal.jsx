@@ -104,8 +104,8 @@ const IncomeGoal = () => {
           {
             label: '# of Votes',
             data: [12, 19, 3, 5, 2],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(99, 102, 241, 0.2)',
+            borderColor: 'rgba(99, 102, 241, 1)',
             borderWidth: 1,
           },
         ],
@@ -117,6 +117,16 @@ const IncomeGoal = () => {
             beginAtZero: true,
           },
         },
+        plugins: {
+            beforeDraw: (chart) => {
+              const ctx = chart.canvas.getContext('2d');
+              ctx.save();
+              ctx.globalCompositeOperation = 'destination-over';
+              ctx.fillStyle = 'lightGreen'; // change this to the color you want
+              ctx.fillRect(0, 0, chart.width, chart.height);
+              ctx.restore();
+            }
+          }
       };
 
 
@@ -125,11 +135,11 @@ const IncomeGoal = () => {
             <Navbar />
             <Sidebar />
             <div className="p-10">
-                <div id="income-head" className="flex flex-col justify-center items-center lg:text-7xl text-5xl">
+                <div id="income-head" className="flex flex-col justify-center items-center lg:text-7xl text-5xl text-center lg:pl-0 pl-10">
                     <h1 className="">Income Goal:</h1>
                     <h1 className="">{totalIncomeThisMonth}/{incomeGoalValue}</h1>
                 </div>
-                <div className="flex justify-center items-center mt-10 h-96">
+                <div className="flex justify-center items-center lg:mt-52 mt-20 h-96">
                     <div className="flex flex-col content-center rounded-md skill-div">
                         <div className="skill px-4 flrx flex-col lg:h-44 h-40">
                             <div className="flex flex-row justify-between items-center text-start mb-6 w-11/12">
@@ -145,6 +155,7 @@ const IncomeGoal = () => {
                             <div className="skill-bar " style={{ height: '30px'}}>
                                 <div className="skill-level" style={{ width: percentRounded + '%' }}></div>
                             </div>
+                            
                             
                             <Modal
                             isOpen={showModal}
@@ -170,11 +181,15 @@ const IncomeGoal = () => {
                             </form>
                             </Modal>
                         </div>
+                        <div className="lg:px-10" width="150%">
+                            <Bar data={data} options={options} />
+                        </div>
                     </div>
                 </div>
-                <div className="flex flex-col w-11/12 mx-auto justify-center items-center text-center">
-                    <Bar data={data} options={options} />
-                </div>
+                
+            </div>
+            <div className='mt-52'>
+                <p></p>
             </div>
             
         </>
