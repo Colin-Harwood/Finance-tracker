@@ -3,6 +3,12 @@ import { Navbar } from '../components/Navbar.jsx';
 import './IncomeGoal.css';
 import Sidebar from '../components/Sidebar.jsx';
 import Modal from 'react-modal';
+import { Bar } from 'react-chartjs-2';
+import { Chart, LinearScale, CategoryScale, BarElement } from 'chart.js';
+
+Chart.register(LinearScale);
+Chart.register(CategoryScale);
+Chart.register(BarElement);
 
 Modal.setAppElement('#root');
 
@@ -92,6 +98,27 @@ const IncomeGoal = () => {
     let percentRounded = Math.min(percent, 100);
     percent = Math.round(percent);
 
+    const data = {
+        labels: ['January', 'February', 'March', 'April', 'May'],
+        datasets: [
+          {
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1,
+          },
+        ],
+      };
+    
+      const options = {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      };
+
 
     return (
         <>
@@ -146,6 +173,7 @@ const IncomeGoal = () => {
                     </div>
                 </div>
             </div>
+            <Bar data={data} options={options} />
         </>
     );
 };

@@ -12,9 +12,11 @@
     "build:css": "tailwind build src/index.css -o dist/index.css"
   },
   "dependencies": {
+    "chart.js": "^4.4.1",
     "mongoose": "^8.1.1",
     "re": "^0.1.4",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.21.3"
