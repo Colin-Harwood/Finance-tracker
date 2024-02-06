@@ -14,9 +14,15 @@ const Income = () => {
     const [info, setInfo] = useState(null);
     const [showEditForm, setShowEditForm] = useState(false);
     const [currentIncome, setCurrentIncome] = useState(null);
-    const [date, setDate] = useState('');
-    const month = date.split('-')[1];
-    const year = date.split('-')[0];
+    // Get current date and format it to YYYY-MM
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}`;
+
+    const [date, setDate] = useState(formattedDate);
+
+    let month = date.split('-')[1];
+    let year = date.split('-')[0];
+    
 
     useEffect(() => {
         fetch('http://localhost:3000/info', {
@@ -118,7 +124,7 @@ const Income = () => {
             </div>
             <div className="mx-auto flex justify-center items-center lg:w-1/3 w-9/12" id="dateIncome">
                 <h1 className="lg:text-5xl text-3xl">Date: </h1>
-                <input type="month" className="ml-4 mt-2" onChange={(e) => setDate(e.target.value)}/>
+                <input type="month" className="ml-4 mt-2" value={date} onChange={(e) => setDate(e.target.value)}/>
             </div>
             <div id="income-all" className="mx-auto lg:w-9/12 w-11/12">
                 <div className="grid grid-cols-3">
