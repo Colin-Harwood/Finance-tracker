@@ -142,9 +142,9 @@ const Income = () => {
     const monthPut = (date.getMonth() + 1).toString().padStart(2, '0');
     const yearPut = date.getFullYear().toString();
     console.log('month', monthPut, 'year', yearPut, 'month type', typeof(monthPut), 'year type', typeof(yearPut));
-    totalIncomes.push(getTotalIncomeForMonth(monthPut, yearPut));
+    totalIncomes.unshift(getTotalIncomeForMonth(monthPut, yearPut));
     const labelCon = monthPut + '/' + yearPut;
-    labels.push(labelCon);
+    labels.unshift(labelCon);
   }
 
   // Step 3: Update the data object with these values
