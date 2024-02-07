@@ -127,31 +127,39 @@ const Income = () => {
   };
 
 // Step 2: Calculate the total income for the current month and the past 4 months
-const totalIncomes = [];
-const labels = [];
-for (let i = 0; i < 5; i++) {
-  const date = new Date(currentDate.getFullYear(), currentDate.getMonth() - i, 1);
-  const monthPut = (date.getMonth() + 1).toString().padStart(2, '0');
-  const yearPut = date.getFullYear().toString();
-  console.log('month', monthPut, 'year', yearPut, 'month type', typeof(monthPut), 'year type', typeof(yearPut));
-  totalIncomes.push(getTotalIncomeForMonth(monthPut, yearPut));
-  const labelCon = monthPut + '/' + yearPut;
-  labels.push(labelCon);
-}
+  const totalIncomes = [];
+  const labels = [];
+  for (let i = 0; i < 5; i++) {
+    let monthIn = Number(month) - i - 1;
+    let yearIn = Number(year);
+    if (monthIn < 0) {
+      yearIn = yearIn - 1;
+      monthIn = monthIn + 12;
+    }
+    console.log('monthIn', monthIn, 'month type', typeof(monthIn));
+    console.log('yearIn', yearIn, 'year type', typeof(yearIn));
+    const date = new Date(yearIn, monthIn, 1);
+    const monthPut = (date.getMonth() + 1).toString().padStart(2, '0');
+    const yearPut = date.getFullYear().toString();
+    console.log('month', monthPut, 'year', yearPut, 'month type', typeof(monthPut), 'year type', typeof(yearPut));
+    totalIncomes.push(getTotalIncomeForMonth(monthPut, yearPut));
+    const labelCon = monthPut + '/' + yearPut;
+    labels.push(labelCon);
+  }
 
-// Step 3: Update the data object with these values
-const data = {
-  labels: labels,
-  datasets: [
-    {
-      label: 'Total Income',
-      data: totalIncomes,
-      backgroundColor: 'rgba(99, 102, 241, 0.2)',
-      borderColor: 'rgba(99, 102, 241, 1)',
-      borderWidth: 1,
-    },
-  ],
-};
+  // Step 3: Update the data object with these values
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Total Income',
+        data: totalIncomes,
+        backgroundColor: 'rgba(99, 102, 241, 0.2)',
+        borderColor: 'rgba(99, 102, 241, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
 
   const options = {
     scales: {
