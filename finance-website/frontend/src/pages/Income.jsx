@@ -3,6 +3,12 @@ import { Navbar } from '../components/Navbar.jsx';
 import './Income.css'
 import Sidebar from '../components/Sidebar.jsx';
 import Modal from 'react-modal';
+import { Bar } from 'react-chartjs-2';
+import { Chart, LinearScale, CategoryScale, BarElement } from 'chart.js';
+
+Chart.register(LinearScale);
+Chart.register(CategoryScale);
+Chart.register(BarElement);
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root');
@@ -113,6 +119,37 @@ const Income = () => {
     setShowEditForm(false);
   };
 
+  const data = {
+    labels: ['January', 'February', 'March', 'April', 'May'],
+    datasets: [
+      {
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2],
+        backgroundColor: 'rgba(99, 102, 241, 0.2)',
+        borderColor: 'rgba(99, 102, 241, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options = {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+    plugins: {
+        beforeDraw: (chart) => {
+          const ctx = chart.canvas.getContext('2d');
+          ctx.save();
+          ctx.globalCompositeOperation = 'destination-over';
+          ctx.fillStyle = 'lightGreen'; // change this to the color you want
+          ctx.fillRect(0, 0, chart.width, chart.height);
+          ctx.restore();
+        }
+      }
+  };
+
 
     return (
         <>
@@ -186,6 +223,9 @@ const Income = () => {
                 <button onClick={handleAddClick} id="addButton">
                     <img src="/icons8-plus-96.png" width="65px" alt="plus"></img>
                 </button>
+                </div>
+                <div className="lg:px-10" width="150%">
+                    <Bar data={data} options={options} />
                 </div>
                 
                 <Modal
