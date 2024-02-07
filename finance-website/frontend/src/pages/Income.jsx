@@ -120,25 +120,28 @@ const Income = () => {
   };
 
   // Step 1: Create a function to calculate the total income for a given month and year
-const getTotalIncomeForMonth = (month, year) => {
-  return info && info.incomes
-    .filter(income => income.year === year && income.month === month)
-    .reduce((total, income) => total + income.amount, 0);
-};
+  const getTotalIncomeForMonth = (month, year) => {
+    return info && info.incomes
+      .filter(income => income.year === year && income.month === month)
+      .reduce((total, income) => total + Number(income.amount), 0);
+  };
 
 // Step 2: Calculate the total income for the current month and the past 4 months
 const totalIncomes = [];
+const labels = [];
 for (let i = 0; i < 5; i++) {
   const date = new Date(currentDate.getFullYear(), currentDate.getMonth() - i, 1);
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const year = date.getFullYear().toString();
-  console.log('month', month, 'year', year, 'month type', typeof(month), 'year type', typeof(year));
-  totalIncomes.push(getTotalIncomeForMonth(month, year));
+  const monthPut = (date.getMonth() + 1).toString().padStart(2, '0');
+  const yearPut = date.getFullYear().toString();
+  console.log('month', monthPut, 'year', yearPut, 'month type', typeof(monthPut), 'year type', typeof(yearPut));
+  totalIncomes.push(getTotalIncomeForMonth(monthPut, yearPut));
+  const labelCon = monthPut + '/' + yearPut;
+  labels.push(labelCon);
 }
 
 // Step 3: Update the data object with these values
 const data = {
-  labels: ['This Month', '1 Month Ago', '2 Months Ago', '3 Months Ago', '4 Months Ago'],
+  labels: labels,
   datasets: [
     {
       label: 'Total Income',
