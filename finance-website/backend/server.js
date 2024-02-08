@@ -369,7 +369,7 @@ app.put('/expense', async (req, res) => {
     }
 
     // Find the expense item
-    const itemIndex = user.expenses.findIndex(expense => expense.source === expenseSource);
+    const itemIndex = user.expenses.findIndex(expense => expense.source === expenseSource && expense.amount === amount && expense.month === month && expense.year === year);
     if (itemIndex === -1) {
       return res.status(404).json({ message: 'expense item not found' });
     }

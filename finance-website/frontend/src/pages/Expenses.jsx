@@ -3,6 +3,12 @@ import { Navbar } from '../components/Navbar.jsx';
 import './Expenses.css'
 import Sidebar from '../components/Sidebar.jsx';
 import Modal from 'react-modal';
+import { Bar } from 'react-chartjs-2';
+import { Chart, LinearScale, CategoryScale, BarElement } from 'chart.js';
+
+Chart.register(LinearScale);
+Chart.register(CategoryScale);
+Chart.register(BarElement);
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root');
@@ -112,6 +118,63 @@ const Expenses = () => {
     setShowEditForm(false);
   };
 
+  const getTotalExpenseForMonth = (month, year) => {
+    return info && info.expenses
+      .filter(expense => expense.year === year && expense.month === month)
+      .reduce((total, expense) => total + Number(expense.amount), 0);
+  };
+
+  const totalExpenses = [];
+  const labels = [];
+  for (let i = 0; i < 5; i++) {
+    let monthIn = Number(month) - i - 1;
+    let yearIn = Number(year);
+    if (monthIn < 0) {
+      yearIn = yearIn - 1;
+      monthIn = monthIn + 12;
+    }
+    console.log('monthIn', monthIn, 'month type', typeof(monthIn));
+    console.log('yearIn', yearIn, 'year type', typeof(yearIn));
+    const date = new Date(yearIn, monthIn, 1);
+    const monthPut = (date.getMonth() + 1).toString().padStart(2, '0');
+    const yearPut = date.getFullYear().toString();
+    console.log('month', monthPut, 'year', yearPut, 'month type', typeof(monthPut), 'year type', typeof(yearPut));
+    totalExpenses.unshift(getTotalExpenseForMonth(monthPut, yearPut));
+    const labelCon = monthPut + '/' + yearPut;
+    labels.unshift(labelCon);
+  }
+
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Total Expense',
+        data: totalExpenses,
+        backgroundColor: 'rgba(99, 102, 241, 0.2)',
+        borderColor: 'rgba(99, 102, 241, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options = {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+    plugins: {
+        beforeDraw: (chart) => {
+          const ctx = chart.canvas.getContext('2d');
+          ctx.save();
+          ctx.globalCompositeOperation = 'destination-over';
+          ctx.fillStyle = 'lightGreen'; // change this to the color you want
+          ctx.fillRect(0, 0, chart.width, chart.height);
+          ctx.restore();
+        }
+      }
+  };
+
 
     return (
         <>
@@ -185,6 +248,9 @@ const Expenses = () => {
                 <button onClick={handleAddClick} id="addButton">
                     <img src="/icons8-plus-96.png" width="65px" alt="plus"></img>
                 </button>
+                </div>
+                <div className="lg:px-10">
+                    <Bar data={data} options={options} />
                 </div>
                 
                 <Modal

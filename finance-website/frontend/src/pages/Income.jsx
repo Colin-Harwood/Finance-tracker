@@ -119,14 +119,12 @@ const Income = () => {
     setShowEditForm(false);
   };
 
-  // Step 1: Create a function to calculate the total income for a given month and year
   const getTotalIncomeForMonth = (month, year) => {
     return info && info.incomes
       .filter(income => income.year === year && income.month === month)
       .reduce((total, income) => total + Number(income.amount), 0);
   };
 
-// Step 2: Calculate the total income for the current month and the past 4 months
   const totalIncomes = [];
   const labels = [];
   for (let i = 0; i < 5; i++) {
@@ -136,18 +134,14 @@ const Income = () => {
       yearIn = yearIn - 1;
       monthIn = monthIn + 12;
     }
-    console.log('monthIn', monthIn, 'month type', typeof(monthIn));
-    console.log('yearIn', yearIn, 'year type', typeof(yearIn));
     const date = new Date(yearIn, monthIn, 1);
     const monthPut = (date.getMonth() + 1).toString().padStart(2, '0');
     const yearPut = date.getFullYear().toString();
-    console.log('month', monthPut, 'year', yearPut, 'month type', typeof(monthPut), 'year type', typeof(yearPut));
     totalIncomes.unshift(getTotalIncomeForMonth(monthPut, yearPut));
     const labelCon = monthPut + '/' + yearPut;
     labels.unshift(labelCon);
   }
 
-  // Step 3: Update the data object with these values
   const data = {
     labels: labels,
     datasets: [
