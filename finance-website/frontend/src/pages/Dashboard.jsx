@@ -57,7 +57,7 @@ const Dashboard = () => {
     totalSubscriptions = info.subscriptions.reduce((total, subscription) => total + parseFloat(subscription.amount), 0);
   }
 
-  const monthOverview = totalIncomeThisMonth - totalExpenseThisMonth;
+  const monthOverview = totalIncomeThisMonth - totalExpenseThisMonth - totalSubscriptions;
 
   const incomeGoalValue = info ? info.incomeGoal : '';
 

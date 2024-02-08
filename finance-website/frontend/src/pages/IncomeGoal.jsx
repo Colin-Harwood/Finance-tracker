@@ -107,7 +107,7 @@ const IncomeGoal = () => {
                     <h1 className="">Income Goal:</h1>
                     <h1 className="">{totalIncomeThisMonth}/{incomeGoalValue}</h1>
                 </div>
-                <div className="flex justify-center items-center mt-12 h-96">
+                <div className="flex justify-center items-center lg:mt-12 mt-0 h-96">
                     <div className="flex flex-col content-center rounded-md skill-div">
                         <div className="skill px-4 flrx flex-col lg:h-44 h-40">
                             <div className="flex flex-row justify-between items-center text-start mb-6 w-11/12">

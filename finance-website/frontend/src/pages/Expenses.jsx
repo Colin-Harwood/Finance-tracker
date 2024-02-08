@@ -223,6 +223,9 @@ const Expenses = () => {
                       </div>
                     </div>
                 </div>
+                
+              </>
+                ))}
                 <Modal
                 isOpen={showEditForm}
                 onRequestClose={() => setShowEditForm(false)}
@@ -241,8 +244,6 @@ const Expenses = () => {
                   
                 </form>
               </Modal>
-              </>
-                ))}
                 <hr/>
                 <div className="flex flex-row justify-end items-end">
                 <button onClick={handleAddClick} id="addButton">
