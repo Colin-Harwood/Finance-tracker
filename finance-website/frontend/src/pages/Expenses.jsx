@@ -181,7 +181,7 @@ const Expenses = () => {
         <Navbar/>
         < Sidebar />
         <div className="p-10">
-            <div id="expense-head" className="flex justify-center lg:text-7xl text-5xl mx-auto w-screen">
+            <div id="expense-head" className="flex justify-center lg:text-7xl text-5xl mx-auto w-screen text-center">
                 <h1 className="">Expense Sources</h1>
             </div>
             <div className="mx-auto flex justify-center items-center lg:w-1/3 w-9/12" id="dateExpense">
@@ -235,11 +235,13 @@ const Expenses = () => {
                 style={customStyles}
               >
                 
-                <form onSubmit={(event) => handleEditSubmit(event)} className="h-96 flex flex-col items-center justify-center">
-                  <button onClick={() => setShowEditForm(false)} className="mb-10">Close</button>
-                  <title>Edit Expense Source</title>
-                  <label htmlFor="Amount">Amount</label>
-                  <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount" />
+                <form onSubmit={(event) => handleEditSubmit(event)} className="h-96 flex flex-col items-center justify-start p-5">
+                  <div className="flex flex-row justify-end w-full mr-3 h-1/8">
+                    <button onClick={() => setShowEditForm(false)} className="">Close</button>
+                  </div>
+                  <title >Edit Income Source</title>
+                  <label htmlFor="Amount" className="mt-12">Amount</label>
+                  <input type="number" className="mt-3" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount" />
                   <button type="submit" id="submit">Change</button>
                   
                 </form>

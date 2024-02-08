@@ -53,6 +53,10 @@
     width: 130px;
   }
 
+#goalModalCLose {
+    margin-top: -150px !important;
+}
+
 @media (max-width: 728px) {
     .skill-div {
         background-color: #f2f2f2;

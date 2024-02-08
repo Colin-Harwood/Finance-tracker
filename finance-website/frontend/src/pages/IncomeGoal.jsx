@@ -135,15 +135,16 @@ const IncomeGoal = () => {
                             >
                             
                             <form onSubmit={handleSubmit} className="h-96 flex flex-col items-center justify-center">
-                                <div className="flex flex-row justify-end w-full mr-3 px-5 mb-5" style={{marginTop: '-90px'}}>
+                                <div className="flex flex-row justify-end items-start w-full mr-3 px-5 mb-5" style={{marginTop: '-90px'}} id="goalModalCLose">
                                     <button onClick={closeModal} class="close-income-modal right-0">Close</button>
                                 </div>
-                                <label htmlFor="amount">Amount</label>
+                                <label htmlFor="amount" className="mt-10">Amount</label>
                                 <input
                                 type="number"
                                 value={incomeGoal}
                                 onChange={(e) => setIncomeGoal(e.target.value)}
                                 placeholder="Amount"
+                                className="mt-3"
                                 />
                                 <button type="submit" id="submit">Change</button>
                             </form>

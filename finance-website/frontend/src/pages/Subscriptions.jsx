@@ -166,11 +166,13 @@ const Subscriptions = () => {
                 id="subscriptionEditModal"
               >
                 
-                <form onSubmit={(event) => handleEditSubmit(event)} className="h-96 flex flex-col items-center justify-center">
-                  <button onClick={() => setShowEditForm(false)} className="mb-10">Close</button>
-                  <title>Edit Subscription Source</title>
-                  <label htmlFor="Amount">Amount</label>
-                  <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount" />
+                <form onSubmit={(event) => handleEditSubmit(event)} className="h-96 flex flex-col items-center justify-start p-5">
+                  <div className="flex flex-row justify-end items-start w-full mr-3 ">
+                    <button onClick={() => setShowEditForm(false)} className="">Close</button>
+                  </div>
+                  <title >Edit Income Source</title>
+                  <label htmlFor="Amount" className="mt-12">Amount</label>
+                  <input type="number" className="mt-3" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount" />
                   <button type="submit" id="submit">Change</button>
                   
                 </form>
