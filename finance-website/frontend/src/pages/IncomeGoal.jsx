@@ -3,12 +3,7 @@ import { Navbar } from '../components/Navbar.jsx';
 import './IncomeGoal.css';
 import Sidebar from '../components/Sidebar.jsx';
 import Modal from 'react-modal';
-import { Bar } from 'react-chartjs-2';
-import { Chart, LinearScale, CategoryScale, BarElement } from 'chart.js';
 
-Chart.register(LinearScale);
-Chart.register(CategoryScale);
-Chart.register(BarElement);
 
 Modal.setAppElement('#root');
 
@@ -98,36 +93,9 @@ const IncomeGoal = () => {
     let percentRounded = Math.min(percent, 100);
     percent = Math.round(percent);
 
-    const data = {
-        labels: ['January', 'February', 'March', 'April', 'May'],
-        datasets: [
-          {
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2],
-            backgroundColor: 'rgba(99, 102, 241, 0.2)',
-            borderColor: 'rgba(99, 102, 241, 1)',
-            borderWidth: 1,
-          },
-        ],
-      };
     
-      const options = {
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
-        plugins: {
-            beforeDraw: (chart) => {
-              const ctx = chart.canvas.getContext('2d');
-              ctx.save();
-              ctx.globalCompositeOperation = 'destination-over';
-              ctx.fillStyle = 'lightGreen'; // change this to the color you want
-              ctx.fillRect(0, 0, chart.width, chart.height);
-              ctx.restore();
-            }
-          }
-      };
+    
+      
 
 
     return (
@@ -139,7 +107,7 @@ const IncomeGoal = () => {
                     <h1 className="">Income Goal:</h1>
                     <h1 className="">{totalIncomeThisMonth}/{incomeGoalValue}</h1>
                 </div>
-                <div className="flex justify-center items-center lg:mt-52 mt-20 h-96">
+                <div className="flex justify-center items-center mt-12 h-96">
                     <div className="flex flex-col content-center rounded-md skill-div">
                         <div className="skill px-4 flrx flex-col lg:h-44 h-40">
                             <div className="flex flex-row justify-between items-center text-start mb-6 w-11/12">
@@ -180,9 +148,6 @@ const IncomeGoal = () => {
                                 <button type="submit" id="submit">Change</button>
                             </form>
                             </Modal>
-                        </div>
-                        <div className="lg:px-10" width="150%">
-                            <Bar data={data} options={options} />
                         </div>
                     </div>
                 </div>
