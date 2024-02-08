@@ -52,3 +52,11 @@
 .close-expense-modal {
     margin-top: 50px !important;
 }
+
+#expenseModal {
+    position: fixed;
+}
+
+#expenseEditModal {
+    position: fixed;
+}

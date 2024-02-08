@@ -132,6 +132,7 @@ const IncomeGoal = () => {
                             className="Modal flex flex-col items-center justify-center backdrop-brightness-50 h-screen w-screen"
                             overlayClassName="Overlay"
                             style={customStyles}
+                            id = "goalEditModal"
                             >
                             
                             <form onSubmit={handleSubmit} className="h-96 flex flex-col items-center justify-center">

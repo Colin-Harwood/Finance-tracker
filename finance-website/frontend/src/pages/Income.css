@@ -45,6 +45,14 @@ body, html {
     
 }
 
+#incomeModal {
+    position: fixed;
+}
+
+#incomeEditModal {
+    position: fixed;
+}
+
 .Overlay {
     background-color: rgba(0, 0, 0, 0.5) !important;
   }

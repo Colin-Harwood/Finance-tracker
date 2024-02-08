@@ -232,6 +232,7 @@ const Income = () => {
                 className="Modal flex flex-col items-center justify-center backdrop-brightness-50 h-screen w-screen"
                 overlayClassName="Overlay"
                 style={customStyles}
+                id="incomeEditModal"
               >
                 
                 <form onSubmit={(event) => handleEditSubmit(event)} className="h-96 flex flex-col items-center justify-start p-5">
@@ -262,6 +263,7 @@ const Income = () => {
                 className="Modal flex flex-col items-center justify-center backdrop-brightness-50 h-screen w-screen"
                 overlayClassName="Overlay"
                 style={customStyles}
+                id="incomeModal"
                 >
                 
                 <form onSubmit={handleSubmit} className="h-96 flex flex-col items-center justify-center">

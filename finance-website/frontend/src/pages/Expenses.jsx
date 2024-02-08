@@ -233,6 +233,7 @@ const Expenses = () => {
                 className="Modal flex flex-col items-center justify-center backdrop-brightness-50 h-screen w-screen"
                 overlayClassName="Overlay"
                 style={customStyles}
+                id="expenseEditModal"
               >
                 
                 <form onSubmit={(event) => handleEditSubmit(event)} className="h-96 flex flex-col items-center justify-start p-5">
@@ -263,6 +264,7 @@ const Expenses = () => {
                 className="Modal flex flex-col items-center justify-center backdrop-brightness-50 h-screen w-screen"
                 overlayClassName="Overlay"
                 style={customStyles}
+                id="expenseModal"
                 >
                 
                 <form onSubmit={handleSubmit} className="h-96 flex flex-col items-center justify-center">

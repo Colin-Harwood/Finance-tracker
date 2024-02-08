@@ -48,4 +48,9 @@
 
 #subscriptionEditModal {
     backdrop-filter: brightness(50%) !important;
+    position: fixed;
+}
+
+#subscriptionModal {
+    position: fixed;
 }
