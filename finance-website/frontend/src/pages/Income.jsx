@@ -114,6 +114,7 @@ const Income = () => {
       },
       body: JSON.stringify({ incomeSource: currentIncome.source, amount: amount, month: month, year: year})
     });
+    console.log(currentIncome.source, amount, month, year)
     const data = await response.json();
     console.log(data);
     setShowEditForm(false);

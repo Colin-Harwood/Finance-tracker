@@ -270,9 +270,9 @@ app.delete('/income', (req, res) => {
 
 app.put('/income', async (req, res) => {
   try {
-    const { incomeSource, amount } = req.body;
+    const { incomeSource, amount, month, year } = req.body;
 
-    if (!incomeSource || !amount) {
+    if (!incomeSource || !amount || !month || !year) {
       return res.status(400).json({ message: 'Income source and amount are required' });
     }
 
@@ -283,7 +283,7 @@ app.put('/income', async (req, res) => {
     }
 
     // Find the income item
-    const itemIndex = user.incomes.findIndex(income => income.source === incomeSource);
+    const itemIndex = user.incomes.findIndex(income => income.source === incomeSource && income.month === month && income.year === year);
     if (itemIndex === -1) {
       return res.status(404).json({ message: 'Income item not found' });
     }
@@ -369,7 +369,7 @@ app.put('/expense', async (req, res) => {
     }
 
     // Find the expense item
-    const itemIndex = user.expenses.findIndex(expense => expense.source === expenseSource && expense.amount === amount && expense.month === month && expense.year === year);
+    const itemIndex = user.expenses.findIndex(expense => expense.source === expenseSource && expense.month === month && expense.year === year);
     if (itemIndex === -1) {
       return res.status(404).json({ message: 'expense item not found' });
     }
