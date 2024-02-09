@@ -3,6 +3,12 @@ import { Navbar } from '../components/Navbar.jsx';
 import './Dashboard.css'
 import Sidebar from '../components/Sidebar.jsx';
 import { Link } from 'react-router-dom';
+import { Bar } from 'react-chartjs-2';
+import { Chart, LinearScale, CategoryScale, BarElement } from 'chart.js';
+
+Chart.register(LinearScale);
+Chart.register(CategoryScale);
+Chart.register(BarElement);
 
 const Dashboard = () => {
 
@@ -62,6 +68,36 @@ const Dashboard = () => {
   const incomeGoalValue = info ? info.incomeGoal : '';
 
   const percentGoal = ((totalIncomeThisMonth / incomeGoalValue) * 100).toFixed(2) + '%';
+
+  const totalIncomes = [totalExpenseThisMonth, totalIncomeThisMonth];
+  const labels = ['Income', 'Expenses'];
+
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Total Income',
+        data: totalIncomes,
+        backgroundColor: 'rgba(99, 102, 241, 0.2)',
+        borderColor: 'rgba(99, 102, 241, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options = {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+    layout: {
+      padding: {
+        bottom: 0,
+        top: 15,
+      }
+    }
+  };
 
   return (
     <>
@@ -130,6 +166,9 @@ const Dashboard = () => {
         
         <div className="lg:col-span-5 col-span-11 column IandE">
           <p className="text-4xl text-center"><b>Income and Spending</b></p>
+          <div className="flex justify-center">
+            <Bar data={data} options={options} className="lg:mb-10 lg:pb-24 lg:px-8 mt-5 lg:mt-0"/>
+          </div>
         </div>
 
       </div>
