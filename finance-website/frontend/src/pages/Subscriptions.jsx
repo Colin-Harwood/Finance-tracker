@@ -108,14 +108,21 @@ const Subscriptions = () => {
     setShowEditForm(false);
   };
 
+  let totalSubscriptions = 0;
+
+  if (info && info.subscriptions) {
+    totalSubscriptions = info.subscriptions.reduce((total, subscription) => total + parseFloat(subscription.amount), 0);
+  }
 
     return (
         <>
         <Navbar/>
         < Sidebar />
         <div className="p-10">
-            <div id="subscription-head" className="flex justify-center lg:text-7xl text-5xl mx-auto w-screen text-center">
-                <h1 className="">Subscription Sources</h1>
+            <div id="subscription-head" className="flex flex-col justify-center lg:text-7xl text-5xl mx-auto w-screen text-center">
+                <h1 className="">Subscriptions:</h1>
+                <h1 className="mt-3">{totalSubscriptions}</h1>
+
             </div>
             
             <div id="subscription-all" className="mx-auto lg:w-9/12 w-11/12">

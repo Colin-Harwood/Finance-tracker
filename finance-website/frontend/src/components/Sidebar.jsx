@@ -21,9 +21,7 @@ const Sidebar = () => {
     setIsOpen(!isOpen);
   };
 
-  window.onscroll = function() {
-    console.log(window.scrollY);
-  };
+  
 
   return (
     <div id="allSide">
