@@ -13,12 +13,16 @@ const Sidebar = () => {
       }, 300);
       return () => clearTimeout(timer);
     } else {
-      setMarginTop('67px');
+      setMarginTop(Math.max(67 - window.scrollY, 0) + 'px');
     }
   }, [isOpen]);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
+  };
+
+  window.onscroll = function() {
+    console.log(window.scrollY);
   };
 
   return (
