@@ -12,7 +12,7 @@ export const Navbar = () => {
 
     <nav>
       <Link to="/" className="title">
-        Website
+        Noctuque Finance
       </Link>
       <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
         <span></span>

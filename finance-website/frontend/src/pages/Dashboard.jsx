@@ -61,23 +61,25 @@ const Dashboard = () => {
 
   const incomeGoalValue = info ? info.incomeGoal : '';
 
+  const percentGoal = ((totalIncomeThisMonth / incomeGoalValue) * 100).toFixed(2) + '%';
+
   return (
     <>
     <Navbar/>
     < Sidebar />
     
     <div className='p-10 ml-5'>
-      <div className="flex justify-center lg:text-7xl text-5xl">
+      <div className="flex justify-center lg:text-7xl text-5xl text-center">
         <h1><u>{name} Dashboard</u></h1>
       </div>
       <div className="grid grid-cols-11 gap-5 mt-16">
         <div className="lg:col-span-4 md:col-span-7 col-span-11 column">
-          <p className="text-2xl text-center"><b>Month Overview</b></p>
+          <p className="text-4xl text-center"><b>Month Overview</b></p>
           <p className="text-2xl text-center"><b>{monthOverview}</b></p>
         </div>
         
         <div className="lg:col-span-2 md:col-span-4 col-span-11 column">
-          <p className="text-2xl text-center"><b>Subscriptions</b></p>
+          <p className="text-4xl text-center"><b>Subscriptions</b></p>
           <p className="text-2xl text-center"><b>{totalSubscriptions}</b></p>
           {info && info.subscriptions
             .map((income, index) => (
@@ -87,9 +89,12 @@ const Dashboard = () => {
 
         
         <div className="lg:col-span-5 col-span-11 column h-32">
-          <p className="text-2xl text-center"><b>Income Goal</b></p>
-          <p className="text-2xl text-center"><b>{totalIncomeThisMonth}/{incomeGoalValue}</b></p>
-
+          <p className="text-4xl text-center"><b>Income Goal</b></p>
+          <div className="flex flex-col lg:flex-row content-center justify-around pl-10 lg:mt-5 mt-0 w-full">
+          <p className="text-3xl text-center"><b>{percentGoal}</b></p>
+          <p className="text-3xl text-center"><b>{totalIncomeThisMonth}/{incomeGoalValue}</b></p>
+          </div>
+          
         </div>
 
       </div>
@@ -97,7 +102,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-11 gap-5 mt-5">
         
         <div className="lg:col-span-3 md:col-span-6 col-span-11 column">
-          <p className="text-2xl text-center"><b>Income</b></p>
+          <p className="text-4xl text-center"><b>Income</b></p>
           <p className="text-2xl text-center"><b>{totalIncomeThisMonth}</b></p>
           {info && info.incomes
               .filter(income => income.year === currentYear && income.month === currentMonthString)
@@ -112,7 +117,7 @@ const Dashboard = () => {
 
         
         <div className="lg:col-span-3 md:col-span-5 col-span-11 column">
-          <p className="text-2xl text-center"><b>Spending</b></p>
+          <p className="text-4xl text-center"><b>Spending</b></p>
           <p className="text-2xl text-center"><b>{totalExpenseThisMonth}</b></p>
 
           {info && info.expenses
@@ -124,7 +129,7 @@ const Dashboard = () => {
 
         
         <div className="lg:col-span-5 col-span-11 column IandE">
-          <p className="text-2xl text-center"><b>Income and Spending</b></p>
+          <p className="text-4xl text-center"><b>Income and Spending</b></p>
         </div>
 
       </div>
