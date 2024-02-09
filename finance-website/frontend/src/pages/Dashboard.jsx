@@ -5,10 +5,13 @@ import Sidebar from '../components/Sidebar.jsx';
 import { Link } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
 import { Chart, LinearScale, CategoryScale, BarElement } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
+import { ArcElement } from 'chart.js';
 
 Chart.register(LinearScale);
 Chart.register(CategoryScale);
 Chart.register(BarElement);
+Chart.register(ArcElement);
 
 const Dashboard = () => {
 
@@ -99,6 +102,46 @@ const Dashboard = () => {
     }
   };
 
+  let subscriptionLabels = [];
+  let subscriptionData = [];
+
+  if (info && info.subscriptions) {
+    totalSubscriptions = info.subscriptions.reduce((total, subscription) => {
+      subscriptionLabels.push(subscription.source);
+      subscriptionData.push(parseFloat(subscription.amount));
+      console.log('subscription amount', subscriptionLabels, subscriptionData)
+      return total + parseFloat(subscription.amount);
+    }, 0);
+  }
+
+  const subscriptionPieData = {
+    labels: subscriptionLabels,
+    datasets: [
+      {
+        data: subscriptionData,
+        backgroundColor: [
+          // Add as many colors as you have subscriptions
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+
   return (
     <>
     <Navbar/>
@@ -117,10 +160,9 @@ const Dashboard = () => {
         <div className="lg:col-span-2 md:col-span-4 col-span-11 column">
           <p className="text-4xl text-center"><b>Subscriptions</b></p>
           <p className="text-2xl text-center"><b>{totalSubscriptions}</b></p>
-          {info && info.subscriptions
-            .map((income, index) => (
-              <p key={index}>{`${income.source}: ${income.amount}`}</p>
-            ))}
+          <div>
+            <Pie data={subscriptionPieData} options={{ responsive: true, maintainAspectRatio: false }} className="mx-auto w-full text-center"/>
+          </div>
         </div>
 
         
