@@ -109,7 +109,8 @@ const Dashboard = () => {
     totalSubscriptions = info.subscriptions.reduce((total, subscription) => {
       subscriptionLabels.push(subscription.source);
       subscriptionData.push(parseFloat(subscription.amount));
-      console.log('subscription amount', subscriptionLabels, subscriptionData)
+      console.log('subscription labels', subscriptionLabels)
+      console.log('subscription amount', subscriptionData)
       return total + parseFloat(subscription.amount);
     }, 0);
   }
@@ -157,11 +158,25 @@ const Dashboard = () => {
           <p className="text-2xl text-center"><b>{monthOverview}</b></p>
         </div>
         
-        <div className="lg:col-span-2 md:col-span-4 col-span-11 column">
+        <div className="lg:col-span-2 md:col-span-4 col-span-11 column Subs">
           <p className="text-4xl text-center"><b>Subscriptions</b></p>
           <p className="text-2xl text-center"><b>{totalSubscriptions}</b></p>
           <div>
-            <Pie data={subscriptionPieData} options={{ responsive: true, maintainAspectRatio: false }} className="mx-auto w-full text-center"/>
+            <Pie data={subscriptionPieData} options={{ responsive: true, maintainAspectRatio: false, plugins: { legend: {display: true}},
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            let label = context.label || '';
+            if (label) {
+              label += ': ';
+            }
+            if (context.parsed !== undefined) {
+              label += context.parsed;
+            }
+            return label;
+          }
+        }
+      },}} className="mx-auto w-full text-center  lg:mb-0 lg:p-0" />
           </div>
         </div>
 
