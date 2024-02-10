@@ -164,15 +164,24 @@ const Expenses = () => {
       },
     },
     plugins: {
-        beforeDraw: (chart) => {
-          const ctx = chart.canvas.getContext('2d');
-          ctx.save();
-          ctx.globalCompositeOperation = 'destination-over';
-          ctx.fillStyle = 'lightGreen'; // change this to the color you want
-          ctx.fillRect(0, 0, chart.width, chart.height);
-          ctx.restore();
-        }
+      tooltip: {
+        enabled: true,
+        intersect: false,
+        mode: 'nearest',
+        callbacks: {
+          title: () => 'title',
+          label: (item) => item.parsed + '%'
+        },
+      },
+      beforeDraw: (chart) => {
+        const ctx = chart.canvas.getContext('2d');
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.fillStyle = 'lightGreen'; // change this to the color you want
+        ctx.fillRect(0, 0, chart.width, chart.height);
+        ctx.restore();
       }
+    }
   };
 
 

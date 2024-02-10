@@ -172,7 +172,7 @@ const Dashboard = () => {
           <p className="text-4xl text-center"><b>Subscriptions</b></p>
           <p className="text-2xl text-center"><b>{totalSubscriptions}</b></p>
           <div>
-            <Pie data={subscriptionPieData} options={{ responsive: true, maintainAspectRatio: false, plugins: { legend: {display: true}},
+            <Pie data={subscriptionPieData} options={{ responsive: true, maintainAspectRatio: false, plugins: { legend: {display: false}},
       tooltip: {
         callbacks: {
           label: function(context) {
