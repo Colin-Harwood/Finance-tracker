@@ -161,7 +161,7 @@ const Dashboard = () => {
     
     <div className='p-10 ml-5'>
       <div className="flex justify-center lg:text-7xl text-5xl text-center">
-        <h1><u>{name} Dashboard</u></h1>
+        <h1><u>{name}'s Dashboard</u></h1>
       </div>
       <div className="grid grid-cols-11 gap-5 mt-16">
         <div className="lg:col-span-4 md:col-span-7 col-span-11 column">

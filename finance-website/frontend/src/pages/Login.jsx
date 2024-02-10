@@ -6,6 +6,7 @@ import './Login.css';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 
@@ -38,6 +39,7 @@ const Login = () => {
     } else {
       // Login failed
       console.error(data);
+      setErrorMessage('Login failed: Incorrect username or password');
     }
   };
 
@@ -47,6 +49,7 @@ const Login = () => {
 
   return (
     <>
+    
     <div id='login'>
         <body>
         <div className="flex flex-col items-center justify-center">
@@ -59,6 +62,7 @@ const Login = () => {
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
         <button type="submit" id="submit">Log in</button>
+        {errorMessage && <div className="alert mt-4">{errorMessage}</div>}
       </form>
       </div>
       </body>
