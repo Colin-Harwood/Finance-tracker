@@ -107,7 +107,10 @@ const Dashboard = () => {
         bottom: 0,
         top: 15,
       }
-    }
+    }, 
+    legend: {
+      display: false,
+    },
   };
 
   let subscriptionLabels = [];
@@ -170,7 +173,7 @@ const Dashboard = () => {
         
         <div className="lg:col-span-2 md:col-span-4 col-span-11 column Subs">
           <p className="text-4xl text-center"><b>Subscriptions</b></p>
-          <p className="text-2xl text-center"><b>{totalSubscriptions}</b></p>
+          <p className="text-2xl text-center" style={{color: '#FF0000'}}><b>{totalSubscriptions}</b></p>
           <div>
             <Pie data={subscriptionPieData} options={{ responsive: true, maintainAspectRatio: false, plugins: { legend: {display: false}},
       tooltip: {
@@ -206,7 +209,7 @@ const Dashboard = () => {
         
         <div className="lg:col-span-3 md:col-span-6 col-span-11 column">
           <p className="text-4xl text-center"><b>Income</b></p>
-          <p className="text-2xl text-center"><b>{totalIncomeThisMonth}</b></p>
+          <p className="text-2xl text-center" style={{color: '#118C4F'}}><b>{totalIncomeThisMonth}</b></p>
           {info && info.incomes
               .filter(income => income.year === currentYear && income.month === currentMonthString)
               .map((income, index) => (
@@ -221,7 +224,7 @@ const Dashboard = () => {
         
         <div className="lg:col-span-3 md:col-span-5 col-span-11 column">
           <p className="text-4xl text-center"><b>Spending</b></p>
-          <p className="text-2xl text-center"><b>{totalExpenseThisMonth}</b></p>
+          <p className="text-2xl text-center" style={{color: '#FF0000'}}><b>{totalExpenseThisMonth}</b></p>
 
           {info && info.expenses
             .filter(expense => expense.year === currentYear && expense.month === currentMonthString)
@@ -234,7 +237,7 @@ const Dashboard = () => {
         <div className="lg:col-span-5 col-span-11 column IandE">
           <p className="text-4xl text-center"><b>Income and Spending</b></p>
           <div className="flex justify-center">
-            <Bar data={data} options={options} className="lg:mb-10 lg:pb-24 lg:px-8 mt-5 lg:mt-0"/>
+            <Bar data={data} options={{legend: {display: false}}} className="lg:mb-10 lg:pb-24 lg:px-8 mt-5 lg:mt-0"/>
           </div>
         </div>
 
