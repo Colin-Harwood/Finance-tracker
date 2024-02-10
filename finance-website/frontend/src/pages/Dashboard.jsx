@@ -68,6 +68,14 @@ const Dashboard = () => {
 
   const monthOverview = totalIncomeThisMonth - totalExpenseThisMonth - totalSubscriptions;
 
+  let colour = '#118C4F'
+  if (monthOverview > 0) {
+    colour = '#118C4F'
+  } else if (monthOverview < 0) {
+    colour = '#FF0000'
+  }
+
+
   const incomeGoalValue = info ? info.incomeGoal : '';
 
   const percentGoal = ((totalIncomeThisMonth / incomeGoalValue) * 100).toFixed(2) + '%';
@@ -145,7 +153,7 @@ const Dashboard = () => {
 
   return (
     <>
-    <Navbar/>
+    <Navbar id="navbarDash"/>
     < Sidebar />
     
     <div className='p-10 ml-5'>
@@ -155,7 +163,9 @@ const Dashboard = () => {
       <div className="grid grid-cols-11 gap-5 mt-16">
         <div className="lg:col-span-4 md:col-span-7 col-span-11 column">
           <p className="text-4xl text-center"><b>Month Overview</b></p>
-          <p className="text-2xl text-center"><b>{monthOverview}</b></p>
+          <div className="flex flex-col justify-center h-2/3">
+            <p className="lg:text-9xl text-7xl text-center" id="monthAmount" style={{color: colour}}><b>{monthOverview}</b></p>
+          </div>
         </div>
         
         <div className="lg:col-span-2 md:col-span-4 col-span-11 column Subs">

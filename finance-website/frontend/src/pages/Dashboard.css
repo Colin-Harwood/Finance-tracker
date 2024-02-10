@@ -28,3 +28,9 @@
     text-decoration: none !important;
     display: block !important;
   }
+
+
+#navbarDash {
+    position: fixed !important;
+}
+
