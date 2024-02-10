@@ -36,32 +36,48 @@ const Sidebar = () => {
         </button>
         <ul>
           <Link to="/dashboard">
-          <li className="mb-2 text-2xl">
-          <h3>Dashboard</h3>
+          <li className="pl-3 mb-4 text-2xl">
+            <div className="flex flex-row">
+            <img src="/icons8-dashboard-48.png" alt="Dashboard Icon" width="30px"/>
+            <h3 className="pl-2"><b>Dashboard</b></h3>
+            </div>
+          
           </li>
           </Link>
           <hr />
           <Link to="/income">
-          <li className="mb-2 text-2xl mt-2">
-            <h3>Income</h3>
+          <li className="pl-2 mb-4 text-2xl mt-4">
+          <div className="flex flex-row">
+            <img src="/icons8-money-48.png" alt="Income Icon" width="30px"/>
+            <h3 className="pl-2"><b>Income</b></h3>
+          </div>
           </li>
           </Link>
           <hr />
           <Link to="/expenses">
-          <li className="mt-2 mb-2 text-2xl">
-            <h3>Expenses</h3>
+          <li className="pl-2 mt-4 mb-4 text-2xl">
+          <div className="flex flex-row">
+            <img src="/icons8-debt-48.png" alt="Expense Icon" width="30px"/>
+            <h3 className="pl-2"><b>Expenses</b></h3>
+          </div>
           </li>
           </Link>
           <hr />
           <Link to="/subscriptions">
-          <li className="mt-2 mb-2 text-2xl">
-            <h3>Subscriptions</h3>
+          <li className="pl-2 mt-4 mb-4 text-2xl">
+          <div className="flex flex-row">
+            <img src="/icons8-schedule-64.png" alt="Subscriptions Icon" width="30px"/>
+            <h3 className="pl-2"><b>Subscriptions</b></h3>
+          </div>
           </li>
           </Link>
           <hr />
           <Link to="/income-goal">
-          <li className="mt-2 text-2xl">
-            <h3>Income Goal</h3>
+          <li className="pl-2 mt-4 text-2xl">
+          <div className="flex flex-row">
+            <img src="/icons8-goal-64.png" alt="Goal Icon" width="30px"/>
+            <h3 className="pl-2"><b>Income Goal</b></h3>
+          </div>
           </li>
           </Link>
           {/* Add more links as needed */}
