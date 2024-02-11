@@ -32,7 +32,7 @@ const Home = () => {
     <div id="home">
     <Navbar/>
     <div className="flex flex-row justify-center content-center " id="welcome-text">
-      <div className="flex flex-col home-container h-screen justify-center  main-header">
+      <div className="flex flex-col home-container lg:h-screen h-auto justify-center  main-header">
         <h1 className=" font-bold text-center lg:mx-28 mx-8" id="hero-header">
           Transforming <div className="textInHeroHead">financial management</div>one step at a time.
         </h1>
