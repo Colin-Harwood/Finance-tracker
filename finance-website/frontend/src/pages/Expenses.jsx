@@ -4,7 +4,7 @@ import './Expenses.css'
 import Sidebar from '../components/Sidebar.jsx';
 import Modal from 'react-modal';
 import { Bar } from 'react-chartjs-2';
-import { Chart, LinearScale, CategoryScale, BarElement } from 'chart.js';
+import { Chart, LinearScale, CategoryScale, BarElement, Tooltip } from 'chart.js';
 
 Chart.register(LinearScale);
 Chart.register(CategoryScale);
@@ -169,8 +169,8 @@ const Expenses = () => {
         intersect: false,
         mode: 'nearest',
         callbacks: {
-          title: () => 'title',
-          label: (item) => item.parsed + '%'
+          title: (context) => context[0].label,
+          label: (context) => context.parsed.y
         },
       },
       beforeDraw: (chart) => {

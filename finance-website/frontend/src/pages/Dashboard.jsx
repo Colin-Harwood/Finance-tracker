@@ -4,7 +4,7 @@ import './Dashboard.css'
 import Sidebar from '../components/Sidebar.jsx';
 import { Link } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
-import { Chart, LinearScale, CategoryScale, BarElement } from 'chart.js';
+import { Chart, LinearScale, CategoryScale, BarElement, Tooltip } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { ArcElement } from 'chart.js';
 
