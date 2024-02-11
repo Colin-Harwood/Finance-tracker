@@ -48,7 +48,7 @@ const Home = () => {
           </a>
         ) : (
           <a href="/Signup">
-          <button className="text-left mt-10 " id='DashboardButton'>
+          <button className="text-left mt-10 " id='SignUpButton'>
             Sign Up
           </button>
           </a>
@@ -84,6 +84,9 @@ const Home = () => {
         Set and track your income goals effortlessly with our intuitive platform, empowering you to define and achieve your financial milestones with ease.
         </p>
       </div>
+    </div>
+    <div id="whyUs">
+          <h1 className="text-center py-20 lg:text-8xl text-6xl">Why US</h1>
     </div>
     </div>
     </>
