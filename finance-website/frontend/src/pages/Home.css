@@ -1,3 +1,24 @@
+@media screen and (max-width: 768px) {
+  #hero-header {
+    font-size: 50px !important;
+  }
+  
+}
+
+@media screen and (max-width: 1024px) {
+  #hero-header {
+    font-size: 70px !important;
+  }
+  
+}
+
+@media screen and (max-width: 640px) {
+  #hero-header {
+    font-size: 40px !important;
+  }
+  
+}
+
 #home {
   background-color: rgb(250, 250, 250);
     
@@ -34,6 +55,40 @@ h1 {
   width: 100px;
 }
 
+#DashboardButton {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100px;
+}
+
+#DashboardButton:hover {
+  background-color: #6365f1e0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100px;
+}
+
 .main-header {
   margin-top: -30px;
+}
+
+#hero-header {
+  font-size: 100px;
+  line-height: 1.2 !important;
+  text-align: left;
+  color: rgb(49, 39, 39);
+
+}
+
+.textInHeroHead {
+  color: #6366f1;
 }
