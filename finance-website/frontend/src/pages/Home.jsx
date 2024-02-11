@@ -56,8 +56,25 @@ const Home = () => {
         </div>
         </div>
     </div>
-    <div className="h-96" id="services">
-      <p>Test</p>
+    <div className="h-96 columns-1 md:columns-1 lg:columns-3 lg:px-8" id="services">
+      <div className="flex flex-col items-center justify-around h-full">
+        <div className="serviceIconCircle flex justify-center items-center">
+          <img src="/icons8-dashboard-96.png" alt="Dashboard Icon" width="96px"/>
+        </div>
+        <h2 className="text-center text-4xl font-bold">Overview/Dashboard</h2>
+      </div>
+      <div className="flex flex-col items-center justify-around h-full">
+        <div className="serviceIconCircle flex justify-center items-center">
+          <img src="/icons8-money-96.png" alt="Income Icon" width="96px"/>
+        </div>
+        <h2 className="text-center text-4xl font-bold">Easily update</h2>
+      </div>
+      <div className="flex flex-col items-center justify-around h-full">
+        <div className="serviceIconCircle flex justify-center items-center">
+          <img src="/icons8-goal-96.png" alt="Goals Icon" width="96px"/>
+        </div>
+        <h2 className="text-center text-4xl font-bold">Easily Set goals</h2>
+      </div>
     </div>
     </div>
     </>
