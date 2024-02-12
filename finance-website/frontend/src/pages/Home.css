@@ -126,3 +126,22 @@ h1 {
 .serviceColumn {
   margin-bottom: 30px;
 }
+
+#whyUs {
+  width: 100%;
+  
+  /* Create a gradient background */
+  
+  /* Create a pattern of dots */
+  background-image: radial-gradient(circle, #f6f6f6 10%, transparent 10%);
+  
+  /* Control the size of the dots */
+  background-size: 100px 120px;
+  
+  /* Repeat the dot pattern over the entire element */
+  background-repeat: repeat;
+  
+  /* Apply the gradient to the dots */
+  
+}
+

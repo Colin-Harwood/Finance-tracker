@@ -87,6 +87,22 @@ const Home = () => {
     </div>
     <div id="whyUs">
           <h1 className="text-center py-20 lg:text-8xl text-6xl">Why US</h1>
+          <div className="columns-1 lg:columns-2 px-10">
+            <div>
+              <img src="/cybersecurity-vs-information-security-illustration.jpg" className="rounded-xl"></img>
+            </div>
+            <div className="flex flex-col justify-center items-start min-h-96">
+              <h1>Don't use your information</h1>
+            </div>
+          </div>
+          <div className="columns-1 lg:columns-2 px-10">
+            <div className="flex flex-col justify-center items-end min-h-96">
+              <h1>Don't use your information</h1>
+            </div>
+            <div>
+              <img src="/CrossCompatible.png" className="rounded-lg"></img>
+            </div>
+          </div>
     </div>
     </div>
     </>
