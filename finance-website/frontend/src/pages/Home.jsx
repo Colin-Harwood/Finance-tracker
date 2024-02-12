@@ -86,18 +86,23 @@ const Home = () => {
       </div>
     </div>
     <div id="whyUs">
-          <h1 className="text-center py-20 lg:text-8xl text-6xl">Why US</h1>
-          <div className="columns-1 lg:columns-2 px-10">
+          <div className="columns-1 lg:columns-2 px-20 mt-10">
             <div>
               <img src="/cybersecurity-vs-information-security-illustration.jpg" className="rounded-xl"></img>
             </div>
-            <div className="flex flex-col justify-center items-start min-h-96">
-              <h1>Don't use your information</h1>
+            <div className="flex flex-col justify-start items-center min-h-96 pt-1">
+              <h1 className="pt-5">Don't use your information</h1>
+              <p className="px-24 ">We can assure you that with us all of your personal information is not being mis-used.</p>
+              <div className="text-left">
+                <p className="pt-5">No viewing or looking at your information.</p>
+                <p>No selling of your information to third parties.</p>
+                <p>No possibility of your information being used maliciously.</p>
+              </div>
             </div>
           </div>
-          <div className="columns-1 lg:columns-2 px-10">
-            <div className="flex flex-col justify-center items-end min-h-96">
-              <h1>Don't use your information</h1>
+          <div className="columns-1 lg:columns-2 px-20 mb-10">
+            <div className="flex flex-col justify-start items-center min-h-96">
+              <h1 className="pt-5">Compatible With All Devices</h1>
             </div>
             <div>
               <img src="/CrossCompatible.png" className="rounded-lg"></img>
