@@ -86,25 +86,49 @@ const Home = () => {
       </div>
     </div>
     <div id="whyUs">
-          <div className="columns-1 lg:columns-2 px-20 mt-10">
+          <div className="columns-1 lg:columns-2 lg:px-20 px-12 mt-10">
             <div>
               <img src="/cybersecurity-vs-information-security-illustration.jpg" className="rounded-xl"></img>
             </div>
-            <div className="flex flex-col justify-start items-center min-h-96 pt-1">
-              <h1 className="pt-5">Don't use your information</h1>
-              <p className="px-24 ">We can assure you that with us all of your personal information is not being mis-used.</p>
+            <div className="flex flex-col justify-center items-center min-h-72">
+              <h1 className="text-4xl lg:text-5xl ml-5">Don't use your information</h1>
+              <p className="lg:px-24 px-0 mt-5">We can assure you that with us all of your personal information is not being misused.</p>
               <div className="text-left">
-                <p className="pt-5">No viewing or looking at your information.</p>
-                <p>No selling of your information to third parties.</p>
-                <p>No possibility of your information being used maliciously.</p>
+                <p className="pt-5">
+                  <img src="/icons8-tick-128.png" alt="purple Tick" width="20px" className="inline-block mr-1"></img>
+                  No viewing or looking at your information.
+                </p>
+                <p className="pt-1">
+                  <img src="/icons8-tick-128.png" alt="purple Tick" width="20px" className="inline-block mr-1"></img>
+                  No selling of your information to third parties.
+                </p>
+                <p className="pt-1">
+                  <img src="/icons8-tick-128.png" alt="purple Tick" width="20px" className="inline-block mr-1"></img>
+                  No possibility of your information being used maliciously.
+                </p>
               </div>
             </div>
           </div>
-          <div className="columns-1 lg:columns-2 px-20 mb-10">
-            <div className="flex flex-col justify-start items-center min-h-96">
-              <h1 className="pt-5">Compatible With All Devices</h1>
+          <div className="columns-1 lg:columns-2 lg:px-20 px-12 mb-10 flex flex-col-reverse lg:flex-row">
+          <div className="flex flex-col justify-center items-center min-h-72">
+              <h1 className="lg:text-5xl text-4xl mr-5">Any time, any where.</h1>
+              <p className="lg:px-24 px-0 mt-5">Experience the convenience and flexibility of managing your finances seamlessly across all your devices no matter where you are.</p>
+              <div className="text-left">
+                <p className="pt-5">
+                  <img src="/icons8-tick-128.png" alt="purple Tick" width="20px" className="inline-block mr-1"></img>
+                  Seamless access across devices.
+                </p>
+                <p className="pt-1">
+                  <img src="/icons8-tick-128.png" alt="purple Tick" width="20px" className="inline-block mr-1"></img>
+                  Consistent user experience.
+                </p>
+                <p className="pt-1">
+                  <img src="/icons8-tick-128.png" alt="purple Tick" width="20px" className="inline-block mr-1"></img>
+                  Synced data across devices.
+                </p>
+              </div>
             </div>
-            <div>
+            <div className="lg:basis-7/12 mt-10 lg:mt-10">
               <img src="/CrossCompatible.png" className="rounded-lg"></img>
             </div>
           </div>
