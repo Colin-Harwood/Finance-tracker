@@ -2,6 +2,9 @@
   #hero-header {
     font-size: 50px !important;
   }
+  #hero-header {
+    line-height: 1.2 !important;
+  }
   
 }
 
@@ -28,6 +31,23 @@
 @media screen and (max-width: 540px) {
   #hero-header {
     font-size: 45px !important;
+  }
+  
+}
+
+@media screen and (max-width: 540px) {
+  #hero-header {
+    font-size: 45px !important;
+  }
+  
+}
+
+@media screen and (max-width: 1136px) {
+  .main-header {
+    margin-top: 60px !important;
+  }
+  #hero-header {
+    line-height: 1;
   }
   
 }
@@ -97,7 +117,7 @@ h1 {
 
 #hero-header {
   font-size: 100px;
-  line-height: 1.2 !important;
+  line-height: 1.2 ;
   text-align: left;
   color: rgb(17, 24, 39, 1);
 
@@ -142,6 +162,12 @@ h1 {
   background-repeat: repeat;
   
   /* Apply the gradient to the dots */
+  
+}
+
+#aboutUs {
+  background-color: #fafafb;
+  padding: 50px 10px;
   
 }
 

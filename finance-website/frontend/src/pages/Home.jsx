@@ -132,7 +132,20 @@ const Home = () => {
               <img src="/CrossCompatible.png" className="rounded-lg"></img>
             </div>
           </div>
-    </div>
+      </div>
+      <div id="aboutUs">
+          <div className="columns-1 lg:columns-2">
+            <div className="xl:px-20 px-7 flex flex-col justify-center items-center">
+              <img src="/StockGraph.webp" className="rounded-xl"></img>
+            </div>
+            <div className="flex flex-col justify-center items-center xl:px-20 lg:px-4 px-12 min-h-72 xl:pt-24">
+              <h1 className="text-4xl lg:text-5xl lg:ml-5 text-center lg:mt-8 xl:mt-0">Update Your Information In Real Time</h1>
+              <p className="lg:px-8 xl:px-24 px-0 mt-5 text-center">
+                See your updated financial information in real time with graphs, charts or just lists, enabling you to make informed decisions and stay in control of your finances.
+              </p>
+            </div>
+          </div>
+      </div>
     </div>
     </>
   );
