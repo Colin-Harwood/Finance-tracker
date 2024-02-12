@@ -86,13 +86,13 @@ const Home = () => {
       </div>
     </div>
     <div id="whyUs">
-          <div className="columns-1 lg:columns-2 lg:px-20 px-12 mt-10">
-            <div>
-              <img src="/cybersecurity-vs-information-security-illustration.jpg" className="rounded-xl"></img>
+          <div className="columns-1 lg:columns-2  mt-10">
+            <div className="xl:px-20 px-7 flex flex-col justify-center items-center">
+              <img src="/cybersecurity-vs-information-security-illustration.jpg " className="rounded-xl"></img>
             </div>
-            <div className="flex flex-col justify-center items-center min-h-72">
-              <h1 className="text-4xl lg:text-5xl ml-5">Don't use your information</h1>
-              <p className="lg:px-24 px-0 mt-5">We can assure you that with us all of your personal information is not being misused.</p>
+            <div className="flex flex-col justify-center items-center xl:px-20 lg:px-4 px-12 min-h-72">
+              <h1 className="text-4xl lg:text-5xl lg:ml-5 text-center lg:mt-8 xl:mt-0">Your information is safe with us.</h1>
+              <p className="lg:px-8 xl:px-24 px-0 mt-5 text-center">We can assure you that with us all of your personal information is not being misused.</p>
               <div className="text-left">
                 <p className="pt-5">
                   <img src="/icons8-tick-128.png" alt="purple Tick" width="20px" className="inline-block mr-1"></img>
@@ -109,10 +109,10 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="columns-1 lg:columns-2 lg:px-20 px-12 mb-10 flex flex-col-reverse lg:flex-row">
-          <div className="flex flex-col justify-center items-center min-h-72">
-              <h1 className="lg:text-5xl text-4xl mr-5">Any time, any where.</h1>
-              <p className="lg:px-24 px-0 mt-5">Experience the convenience and flexibility of managing your finances seamlessly across all your devices no matter where you are.</p>
+          <div className="columns-1 lg:columns-2 mb-10 flex flex-col-reverse lg:flex-row mt-10">
+          <div className="flex flex-col justify-center items-center min-h-72 xl:px-20 lg:px-4 px-12">
+              <h1 className="lg:text-5xl text-4xl lg:mr-5 text-center">Any time, any where.</h1>
+              <p className="lg:px-24 px-0 mt-5 text-center">Experience the convenience and flexibility of managing your finances seamlessly across all your devices no matter where you are.</p>
               <div className="text-left">
                 <p className="pt-5">
                   <img src="/icons8-tick-128.png" alt="purple Tick" width="20px" className="inline-block mr-1"></img>
@@ -128,7 +128,7 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div className="lg:basis-7/12 mt-10 lg:mt-10">
+            <div className="xl:basis-9/12 mt-10 lg:mt-10 xl:px-20 px-7">
               <img src="/CrossCompatible.png" className="rounded-lg"></img>
             </div>
           </div>
