@@ -3,12 +3,12 @@ import { Navbar } from '../components/Navbar.jsx';
 import './Income.css'
 import Sidebar from '../components/Sidebar.jsx';
 import Modal from 'react-modal';
-import { Bar } from 'react-chartjs-2';
-import { Chart, LinearScale, CategoryScale, BarElement } from 'chart.js';
+import { Line } from 'react-chartjs-2';
+import { Chart,  PointElement, LineElement } from 'chart.js';
 
-Chart.register(LinearScale);
-Chart.register(CategoryScale);
-Chart.register(BarElement);
+
+Chart.register(PointElement);
+Chart.register(LineElement);
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root');
@@ -144,6 +144,7 @@ const Income = () => {
   }
 
   const data = {
+    type: 'line',
     labels: labels,
     datasets: [
       {
@@ -253,7 +254,7 @@ const Income = () => {
                 </button>
                 </div>
                 <div className="lg:px-10">
-                    <Bar data={data} options={options} />
+                    <Line data={data} options={options} />
                 </div>
                 
                 <Modal
