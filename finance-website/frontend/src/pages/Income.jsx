@@ -31,14 +31,18 @@ const Income = () => {
     
 
     useEffect(() => {
-        fetch('http://localhost:3000/info', {
-          method: 'GET',
-          credentials: 'include'
-        })
-        .then(response => response.json())
-        .then(data => setInfo(data))
-        .catch(error => console.error('Error:', error));
-      }, []);
+      fetchData();
+    }, []);
+
+    const fetchData = () => {
+      fetch('http://localhost:3000/info', {
+        method: 'GET',
+        credentials: 'include'
+      })
+      .then(response => response.json())
+      .then(data => setInfo(data))
+      .catch(error => console.error('Error:', error));
+    };
   
     const handleAddClick = () => {
       setShowForm(true);
@@ -64,6 +68,7 @@ const Income = () => {
       const data = await response.json();
       console.log(data);
       closeModal();
+      fetchData();
     };
 
     const handleDelete = async (source, amount) => {
@@ -78,6 +83,7 @@ const Income = () => {
       
         const data = await response.json();
         console.log(data);
+        fetchData();
       };
     
   const customStyles = {
@@ -118,6 +124,7 @@ const Income = () => {
     const data = await response.json();
     console.log(data);
     setShowEditForm(false);
+    fetchData();
   };
 
   const getTotalIncomeForMonth = (month, year) => {
