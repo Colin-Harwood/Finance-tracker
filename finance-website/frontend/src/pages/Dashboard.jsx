@@ -81,7 +81,7 @@ const Dashboard = () => {
   const percentGoal = ((totalIncomeThisMonth / incomeGoalValue) * 100).toFixed(2) + '%';
 
   const totalIncomes = [totalExpenseThisMonth, totalIncomeThisMonth];
-  const labels = ['Income', 'Expenses'];
+  const labels = ['Expenses', 'Income'];
 
   const data = {
     labels: labels,
@@ -196,9 +196,12 @@ const Dashboard = () => {
         
         <div className="lg:col-span-5 col-span-11 column h-32">
           <p className="text-4xl text-center"><b>Income Goal</b></p>
-          <div className="flex flex-col lg:flex-row content-center justify-around pl-10 lg:mt-5 mt-0 w-full">
+          <div className="flex flex-col lg:flex-row content-center justify-around pl-10 lg:mt-3 mt-0 w-full">
           <p className="text-3xl text-center"><b>{percentGoal}</b></p>
           <p className="text-3xl text-center"><b>{totalIncomeThisMonth}/{incomeGoalValue}</b></p>
+          </div>
+          <div className="text-center" id="goalChange">
+            <p className="text-lg underline"><a href="/income-goal">Change</a></p>
           </div>
           
         </div>
@@ -211,13 +214,18 @@ const Dashboard = () => {
           <p className="text-4xl text-center"><b>Income</b></p>
           <p className="text-2xl text-center" style={{color: '#118C4F'}}><b>{totalIncomeThisMonth}</b></p>
           {info && info.incomes
-              .filter(income => income.year === currentYear && income.month === currentMonthString)
-              .map((income, index) => (
-              <>
-              <p key={index}>{`${income.source}: ${income.amount}`}</p>
-              
-              </>
-      ))}
+            .filter(income => income.year === currentYear && income.month === currentMonthString)
+            .sort((a, b) => b.amount - a.amount) // Sort incomes in descending order
+            .slice(0, 3) // Get the first four incomes
+            .map((income, index) => (
+                <div key={index} className="flex justify-between px-8">
+                    <p className="text-lg">{`${income.source}:`}</p>
+                    <p className="text-lg">{`${income.amount}`}</p>
+                </div>
+          ))}
+          <div className="text-center" id="incomeMore">
+            <p className="text-lg underline"><a href="/income">View All</a></p>
+          </div>
     
         </div>
 
@@ -228,9 +236,17 @@ const Dashboard = () => {
 
           {info && info.expenses
             .filter(expense => expense.year === currentYear && expense.month === currentMonthString)
-            .map((income, index) => (
-              <p key={index}>{`${income.source}: ${income.amount}`}</p>
-            ))}
+            .sort((a, b) => b.amount - a.amount) // Sort expenses in descending order
+            .slice(0, 3) // Get the first four expenses
+            .map((expense, index) => (
+                <div key={index} className="flex justify-between px-8">
+                    <p className="text-lg">{`${expense.source}:`}</p>
+                    <p className="text-lg">{`${expense.amount}`}</p>
+                </div>
+          ))}
+          <div className="text-center" id="expensesMore">
+            <p className="text-lg underline"><a href="/expenses">View All</a></p>
+          </div>
         </div>
 
         

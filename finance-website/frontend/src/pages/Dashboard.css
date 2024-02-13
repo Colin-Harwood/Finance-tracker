@@ -34,3 +34,14 @@
     position: fixed !important;
 }
 
+#incomeMore {
+    color: rgba(99, 102, 241, 1);
+}
+
+#expensesMore {
+    color: rgba(99, 102, 241, 1);
+}
+
+#goalChange {
+    color: rgba(99, 102, 241, 1);
+}

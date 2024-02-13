@@ -38,8 +38,8 @@ const Home = () => {
           Transforming <div className="textInHeroHead">financial management</div>one step at a time.
         </h1>
         <div className="lg:mx-28 mx-8 mt-12">
-        <p className="lg:text-3xl text-2xl">
-          This is a finance tracker website.
+        <p className="lg:text-2xl text-xl">
+         Helping Empower Your Financial Journey with Progressive Solutions.
         </p>
         {isLoggedIn ? (
           <a href="/Dashboard">
