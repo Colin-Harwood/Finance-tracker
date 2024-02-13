@@ -146,6 +146,18 @@ const Home = () => {
             </div>
           </div>
       </div>
+      <div id="callToAction">
+        <div className="flex flex-col items-center justify-center centerCTA lg:mx-10 mx-5 my-10">
+          <h1 className="text-4xl lg:text-5xl text-center mt-32">Ready to take control of your finances?</h1>
+          <p className="lg:px-24 px-0 mt-5 text-center">Sign up now and start your journey to better finances today.</p>
+          <a href="/Signup">
+          <button className="text-left mt-10" id='SignUpButton'>
+            Sign Up
+          </button>
+          </a>
+          <div className="mb-32"></div>
+        </div>
+      </div>
     </div>
     </>
   );
