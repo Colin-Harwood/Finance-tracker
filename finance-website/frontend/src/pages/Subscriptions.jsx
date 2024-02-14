@@ -20,6 +20,10 @@ const Subscriptions = () => {
     const brightness = 50;
 
     useEffect(() => {
+      fetchData();
+    }, []);
+
+    const fetchData = () => {
         fetch('http://localhost:3000/info', {
           method: 'GET',
           credentials: 'include'
@@ -27,7 +31,7 @@ const Subscriptions = () => {
         .then(response => response.json())
         .then(data => setInfo(data))
         .catch(error => console.error('Error:', error));
-      }, []);
+      };
   
     const handleAddClick = () => {
       setShowForm(true);
@@ -51,8 +55,10 @@ const Subscriptions = () => {
       });
       
       const data = await response.json();
+      fetchData();
       console.log(data);
       closeModal();
+      fetchData();
     };
 
     const handleDelete = async (source, amount) => {
@@ -67,6 +73,7 @@ const Subscriptions = () => {
       
         const data = await response.json();
         console.log(data);
+        fetchData();
       };
     
   const customStyles = {
@@ -106,6 +113,7 @@ const Subscriptions = () => {
     const data = await response.json();
     console.log(data);
     setShowEditForm(false);
+    fetchData();
   };
 
   let totalSubscriptions = 0;

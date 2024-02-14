@@ -13,24 +13,24 @@ const IncomeGoal = () => {
     const [info, setInfo] = useState(null);
 
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:3000/info', {
-                    method: 'GET',
-                    credentials: 'include'
-                  })
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                setInfo(data);
-                console.log(data);
-            } catch (error) {
-                console.error('Error:', error);
+    const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/info', {
+                method: 'GET',
+                credentials: 'include'
+              })
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-        };
-    
+            const data = await response.json();
+            setInfo(data);
+            console.log(data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    useEffect(() => {
         fetchData();
     }, []);
 
@@ -60,6 +60,7 @@ const IncomeGoal = () => {
         const data = await response.json();
         console.log(data);
         closeModal();
+        fetchData();
       };
 
       const date = new Date();

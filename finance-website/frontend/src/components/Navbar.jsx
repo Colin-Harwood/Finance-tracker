@@ -20,12 +20,7 @@ export const Navbar = () => {
         <span></span>
       </div>
       <ul className={menuOpen ? "open" : ""}>
-  <li>
-    <NavLink to="/about">About</NavLink>
-  </li>
-  <li>
-    <NavLink to="/services">Services</NavLink>
-  </li>
+  
   
   {isLoggedIn ? (
     <>

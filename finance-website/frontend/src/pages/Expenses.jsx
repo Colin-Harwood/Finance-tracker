@@ -29,6 +29,10 @@ const Expenses = () => {
     let year = date.split('-')[0];
 
     useEffect(() => {
+      fetchData();
+    }, []);
+
+    const fetchData = () => {
         fetch('http://localhost:3000/info', {
           method: 'GET',
           credentials: 'include'
@@ -36,7 +40,7 @@ const Expenses = () => {
         .then(response => response.json())
         .then(data => setInfo(data))
         .catch(error => console.error('Error:', error));
-      }, []);
+      };
   
     const handleAddClick = () => {
       setShowForm(true);
@@ -62,6 +66,7 @@ const Expenses = () => {
       const data = await response.json();
       console.log(data);
       closeModal();
+      fetchData();
     };
 
     const handleDelete = async (source, amount) => {
@@ -76,6 +81,7 @@ const Expenses = () => {
       
         const data = await response.json();
         console.log(data);
+        fetchData();
       };
     
   const customStyles = {
@@ -115,6 +121,7 @@ const Expenses = () => {
     const data = await response.json();
     console.log(data);
     setShowEditForm(false);
+    fetchData();
   };
 
   const getTotalExpenseForMonth = (month, year) => {
