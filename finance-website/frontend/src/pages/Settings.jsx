@@ -1,9 +1,15 @@
-import { React, useEffect } from 'react'
+import { React, useEffect, useContext } from 'react'
 import { Navbar } from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 import './Settings.css';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../components/AuthContext';
+
 
 const Settings = () => {
+
+    const navigate = useNavigate();
+    const { setIsLoggedIn } = useContext(AuthContext);
 
     const passwordSubmit = async (event) => {
         event.preventDefault();
@@ -25,6 +31,30 @@ const Settings = () => {
             console.error(data);
         }
     }
+
+    const deleteSubmit = async (event) => {
+      event.preventDefault();
+      const confirmPassword = document.getElementById('confirm-password').value;
+      console.log(confirmPassword);
+      const response = await fetch('http://localhost:3000/delete-account', {
+          method: 'DELETE',
+          credentials: 'include',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ password: confirmPassword })
+      });
+      const data = await response.json();
+      if (response.ok) {
+          console.log("Account deleted successfully");
+          localStorage.removeItem('userName');
+          setIsLoggedIn(false);
+          localStorage.removeItem('isLoggedIn');
+          navigate('/');
+      } else {
+          console.error(data);
+      }
+  }
   return (
     <>
         <Navbar />
@@ -40,7 +70,7 @@ const Settings = () => {
             <input type="password" id="new-password" name="new-password"/>
             <input type="submit" value="Change Password" id="passwordSubmit"/>
         </form>
-        <form action="/delete-account" className="flex flex-col items-center justify-center settingsForm mb-20" method="post" id="deleteForm">
+        <form action="/delete-account" className="flex flex-col items-center justify-center settingsForm mb-20" method="post" id="deleteForm" onSubmit={deleteSubmit}>
             <h1 className='text-4xl mb-4'>Delete account:</h1>
             <label htmlFor="confirm-password" className="mb-3">Confirm Password:</label>
             <input type="password" id="confirm-password" name="confirm-password"/>
