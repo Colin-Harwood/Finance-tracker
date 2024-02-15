@@ -9,6 +9,7 @@ import IncomeGoal from './pages/IncomeGoal'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Logout from './pages/Logout'
+import Settings from './pages/Settings'
 import { AuthProvider } from './components/AuthContext';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <Route path="/Signup" element={<Signup />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Logout" element={<Logout />} />
+      <Route path="/settings" element={<Settings />} />
     </Routes>
     </AuthProvider>
   )
