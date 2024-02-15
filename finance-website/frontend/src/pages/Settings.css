@@ -18,3 +18,37 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
+
+#deleteSubmit {
+    background-color: #ff4d4d !important;
+    border: none !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    border-radius: 5px !important;
+}
+
+#deleteSubmit:hover {
+    background-color: #ff6666 !important;
+}
+
+#passwordSubmit {
+    background-color: #4CAF50 !important;
+    border: none !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    border-radius: 5px !important;
+}
+
+#passwordSubmit:hover {
+    background-color: #45a049 !important;
+}

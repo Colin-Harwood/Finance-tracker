@@ -17,13 +17,13 @@ const Settings = () => {
             <input type="password" id="current-password" name="current-password"/>
             <label htmlFor="new-password" className="mb-3">New Password:</label>
             <input type="password" id="new-password" name="new-password"/>
-            <input type="submit" value="Change Password"/>
+            <input type="submit" value="Change Password" id="passwordSubmit"/>
         </form>
         <form action="/delete-account" className="flex flex-col items-center justify-center settingsForm mb-20" method="post" id="deleteForm">
             <h1 className='text-4xl mb-4'>Delete account:</h1>
             <label htmlFor="confirm-password" className="mb-3">Confirm Password:</label>
             <input type="password" id="confirm-password" name="confirm-password"/>
-            <input type="submit" value="Delete Account"/>
+            <input type="submit" value="Delete Account" id="deleteSubmit"/>
         </form>
         </div>
         <Footer />
