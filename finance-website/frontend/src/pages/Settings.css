@@ -40,7 +40,7 @@
     background-color: #4CAF50 !important;
     border: none !important;
     color: white !important;
-    padding: 10px 20px !important;
+    padding: 10px 0px !important;
     text-align: center !important;
     text-decoration: none !important;
     display: inline-block !important;
@@ -51,4 +51,12 @@
 
 #passwordSubmit:hover {
     background-color: #45a049 !important;
+}
+
+.deleteAlert {
+    margin-top: -0px !important;
+}
+
+.passwordAlert {
+    margin-top: -0px !important;
 }
