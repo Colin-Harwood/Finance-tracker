@@ -484,3 +484,65 @@ app.put('/subscription', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
+app.post('/change-password', async (req, res) => {
+  try {
+    const { oldPassword, newPassword } = req.body;
+
+    console.log('old password', oldPassword)
+    console.log('new password', newPassword)
+    console.log('req.user password', req.user.password)
+    if (!newPassword) {
+      return res.status(400).json({ message: 'New password is required' });
+    }
+
+    const isMatch = await bcrypt.compare(oldPassword, req.user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Old password is incorrect' });
+    }
+
+    // Use the authenticated user
+    const user = await User.findOne({ username: req.user.username });
+    if (!user) {
+      return res.status(401).json({ message: 'User not authenticated' });
+    }
+
+    // Hash the new password
+    const hash = await bcrypt.hash(newPassword, 10);
+
+    // Update the user's password
+    user.password = hash;
+
+    // Save the user
+    await user.save();
+
+    res.json({ message: 'Password updated successfully'});
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+app.delete('/delete-account', async (req, res) => {
+  try {
+    const password = req.body.password;
+
+    const isMatch = await bcrypt.compare(password, req.user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Password is incorrect' });
+    }
+    // Use the authenticated user
+    const user = await User.findOne({ username: req.user.username });
+    if (!user) {
+      return res.status(401).json({ message: 'User not authenticated' });
+    }
+
+    // Delete the user
+    await User.deleteOne({ username: req.user.username });
+
+    res.json({ message: 'Account deleted successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});

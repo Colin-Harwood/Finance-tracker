@@ -1,9 +1,30 @@
-import React from 'react'
+import { React, useEffect } from 'react'
 import { Navbar } from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 import './Settings.css';
 
 const Settings = () => {
+
+    const passwordSubmit = async (event) => {
+        event.preventDefault();
+        const currentPassword = document.getElementById('current-password').value;
+        const newPassword = document.getElementById('new-password').value;
+        console.log(currentPassword, newPassword);
+        const response = await fetch('http://localhost:3000/change-password', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ oldPassword:currentPassword, newPassword })
+        });
+        const data = await response.json();
+        if (response.ok) {
+            console.log("Password changed successfully");
+        } else {
+            console.error(data);
+        }
+    }
   return (
     <>
         <Navbar />
@@ -11,7 +32,7 @@ const Settings = () => {
             <h1 className="">Settings</h1>
         </div>
         <div className="flex flex-col items-center justify-center mt-10" id="settingsPanel">
-        <form action="/change-password" method="post" className="flex flex-col items-center p-10 settingsForm" id="passwordForm">
+        <form action="/change-password" method="post" className="flex flex-col items-center p-10 settingsForm" id="passwordForm" onSubmit={passwordSubmit}>
             <h1 className='text-4xl mb-4'>Change Password:</h1><br/>
             <label htmlFor="current-password" className="mb-3">Current Password:</label>
             <input type="password" id="current-password" name="current-password"/>
