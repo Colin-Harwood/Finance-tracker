@@ -4,4 +4,17 @@
 
 .settingsForm {
     background-color: #fafafb !important;
+    
+}
+
+#deleteForm {
+    border-top: none !important;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#passwordForm {
+    border-bottom: none !important;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
