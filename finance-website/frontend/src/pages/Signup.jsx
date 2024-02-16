@@ -1,15 +1,11 @@
-import React from 'react'
+import { React, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
-
+    const [errorMessage, setErrorMessage] = useState(null);
     const navigate = useNavigate();
-
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    
+    const handleSubmit = (event) => {
+      event.preventDefault();
 
     const username = event.target.elements.userName.value;
     const password = event.target.elements.password.value;
@@ -24,8 +20,11 @@ const Signup = () => {
     .then(response => {
       if (response.ok) {
         return response.json();
+      } else if (response.status === 400) {
+        setErrorMessage('Username is already taken');
+        throw new Error('Username is taken');
       } else {
-        throw new Error('Failed to sign up');
+        throw new Error('Server error');
       }
     })
     .then(data => {
@@ -51,6 +50,7 @@ const Signup = () => {
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Password"/>
         <button type="submit" id="submit">Sign-up</button>
+        {errorMessage && <div className="Alert mt-4 mb-5">{errorMessage}</div>}
       </form>
       </div>
       </body>

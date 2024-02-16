@@ -156,6 +156,11 @@ app.get('/', (req, res) => {
 // Create signup route
 app.post('/signup', (req, res) => {
     const { username, password } = req.body;
+
+    const existingUser = User.findOne({ username });
+    if (existingUser) {
+      return res.status(400).json({ message: 'Username already exists' });
+    }
   
     const userInfo = {
       userName: username,
