@@ -8,6 +8,17 @@ const Logout = () => {
 
   useEffect(() => {
     // Call logout function when component mounts
+    fetch('http://localhost:3000/logout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include' // Include cookies in the request
+    })
+    .then(response => response.json())
+    .then(data => console.log(data.message))
+    .then(console.log('Logged out'))
+    .catch(error => console.error('Error:', error));
     logout();
   }, []);
 
