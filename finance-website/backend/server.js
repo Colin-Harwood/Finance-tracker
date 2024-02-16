@@ -122,6 +122,11 @@ app.post('/login', (req, res, next) => {
     })(req, res, next);
   });
 
+app.get('/logout', (req, res) => {
+  req.logout();
+  res.json({ message: 'User logged out successfully' });
+});
+
 app.get('/dashboard', function(req, res){
   if(req.user){
     res.send('Welcome to your dashboard!', User.find());
