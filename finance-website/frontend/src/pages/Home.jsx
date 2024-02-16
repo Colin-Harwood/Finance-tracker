@@ -37,19 +37,19 @@ const Home = () => {
         <h1 className=" font-bold text-center lg:mx-28 mx-8" id="hero-header">
           Transforming <div className="textInHeroHead">financial management</div>one step at a time.
         </h1>
-        <div className="lg:mx-28 mx-8 mt-12">
+        <div className="lg:mx-28 mx-8 lg:mt-12 mt-8">
         <p className="lg:text-2xl text-xl">
          Helping Empower Your Financial Journey with Progressive Solutions.
         </p>
         {isLoggedIn ? (
           <a href="/Dashboard">
-          <button className="text-left mt-10 " id='DashboardButton'>
+          <button className="text-left mt-10 mb-10" id='DashboardButton'>
             Dashboard
           </button>
           </a>
         ) : (
           <a href="/Signup">
-          <button className="text-left mt-10 " id='SignUpButton'>
+          <button className="text-left mt-10 mb-10" id='SignUpButton'>
             Sign Up
           </button>
           </a>
