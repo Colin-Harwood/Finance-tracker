@@ -21,9 +21,10 @@ const Signup = () => {
       if (response.ok) {
         return response.json();
       } else if (response.status === 400) {
-        setErrorMessage('Username is already taken');
+        setErrorMessage('Username is already taken.');
         throw new Error('Username is taken');
       } else {
+        setErrorMessage('SOmething went wrong signing up.');
         throw new Error('Server error');
       }
     })
