@@ -47,7 +47,7 @@ export const Navbar = () => {
               <NavLink to="/Login" id="logIn" className="w-auto">
                 <div className="flex items-center justify-center text-center contact-flex">
                   Login
-                  <img src="/RightArrowWhite.png" alt="Right Arrow" width="20px" className="mt-1"/>
+                  <img src="/RightArrowWhite.png" alt="Right Arrow" width="20px" height="20px" className="mt-1"/>
                 </div>
               </NavLink>
             </li>

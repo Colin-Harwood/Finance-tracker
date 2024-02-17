@@ -4,14 +4,19 @@ import './Dashboard.css'
 import Sidebar from '../components/Sidebar.jsx';
 import { Link } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
-import { Chart, LinearScale, CategoryScale, BarElement, Tooltip } from 'chart.js';
+import { Chart, LinearScale, CategoryScale, BarElement, Tooltip, Title, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { ArcElement } from 'chart.js';
 
-Chart.register(LinearScale);
-Chart.register(CategoryScale);
-Chart.register(BarElement);
-Chart.register(ArcElement);
+Chart.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const Dashboard = () => {
 

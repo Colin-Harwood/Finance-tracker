@@ -2,28 +2,7 @@ import {React, useContext } from 'react';
 import './Home.css';
 import { Navbar } from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-import faker from 'faker';
 import { AuthContext } from '../components/AuthContext.jsx';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
 
 
 const Home = () => {
