@@ -68,7 +68,7 @@ const Home = () => {
     <div id="whyUs">
           <div className="columns-1 lg:columns-2  mt-10">
             <div className="xl:px-20 px-7 flex flex-col justify-center items-center">
-              <img src="/cybersecurity-vs-information-security-illustration.jpg " className="rounded-xl"></img>
+              <img src="/cybersecurity-vs-information-security-illustration.jpg " className="rounded-xl" alt="File of data being locked."></img>
             </div>
             <div className="flex flex-col justify-center items-center xl:px-20 lg:px-4 px-12 min-h-72">
               <h1 className="text-4xl lg:text-5xl lg:ml-5 text-center lg:mt-8 xl:mt-0">Your information is safe with us.</h1>
@@ -109,14 +109,14 @@ const Home = () => {
               </div>
             </div>
             <div className="xl:basis-9/12 mt-10 lg:mt-10 xl:px-20 px-7">
-              <img src="/CrossCompatible.png" className="rounded-lg"></img>
+              <img src="/CrossCompatible.png" className="rounded-lg" alt="Different devices linked together"></img>
             </div>
           </div>
       </div>
       <div id="aboutUs">
           <div className="columns-1 lg:columns-2">
             <div className="xl:px-20 px-7 flex flex-col justify-center items-center">
-              <img src="/StockGraph.webp" className="rounded-xl"></img>
+              <img src="/StockGraph.webp" className="rounded-xl" alt="3D Graph"></img>
             </div>
             <div className="flex flex-col justify-center items-center xl:px-20 lg:px-4 px-12 min-h-72 xl:pt-24">
               <h1 className="text-4xl lg:text-5xl lg:ml-5 text-center lg:mt-8 xl:mt-0">Update Your Information In Real Time</h1>
