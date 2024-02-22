@@ -169,7 +169,9 @@ h1 {
 }
 
 #welcome-text {
-  background-image: radial-gradient(circle, #f6f6f6 10%, transparent 10%);
-  background-size: 100px 120px;
-  background-repeat: repeat;
+  position: relative;
+  background: 
+    linear-gradient(0deg, lightgrey 3px, transparent 3px),
+    linear-gradient(90deg, lightgrey 3px, transparent 3px);
+  background-size: 200px 200px;
 }
