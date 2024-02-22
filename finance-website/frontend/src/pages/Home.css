@@ -50,6 +50,15 @@
     line-height: 1;
   }
   
+  
+}
+
+@media screen and (min-width: 1136px) {
+  
+}
+
+@media screen and (min-width: 400px) {
+  
 }
 
 #home {
@@ -183,10 +192,20 @@ h1 {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.85), transparent);
-  z-index: 0;
+  background: linear-gradient(to right, white, transparent);
+  z-index: 1;
 }
+
+
 
 .main-header {
   z-index: 1;
+}
+
+.tile {
+  position: absolute;
+  width: 200px; /* Adjust these values to match the size of the grid cells */
+  height: 200px;
+  background: rgba(0, 0, 0, 0.1); /* Adjust this value to control the darkness of the gray box */
+  z-index: 0;
 }

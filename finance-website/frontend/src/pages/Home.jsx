@@ -12,6 +12,8 @@ const Home = () => {
     <div id="home">
     <Navbar/>
     <div className="flex flex-row justify-center content-center " id="welcome-text">
+      <div class="tile" style={{top: 0, left: 0}}></div>
+      <div class="tile" style={{top: '200px', left: '200px'}}></div>
       <div className="flex flex-col home-container lg:h-screen h-auto justify-center  main-header">
         <h1 className=" font-bold text-center lg:mx-28 mx-8" id="hero-header">
           Transforming <div className="textInHeroHead">financial management</div>one step at a time.
