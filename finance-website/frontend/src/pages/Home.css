@@ -49,6 +49,9 @@
   #hero-header {
     line-height: 1;
   }
+  #tile3 {
+    visibility: hidden;
+  }
   
   
 }
