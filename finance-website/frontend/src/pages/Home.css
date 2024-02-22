@@ -149,7 +149,7 @@ h1 {
 
 #whyUs {
   width: 100%;
-  background-image: radial-gradient(circle, #f6f6f6 10%, transparent 10%);
+  background-image: radial-gradient(circle, #e8e9eb 10%, transparent 10%);
   background-size: 100px 120px;
   background-repeat: repeat;
 }
@@ -171,7 +171,22 @@ h1 {
 #welcome-text {
   position: relative;
   background: 
-    linear-gradient(0deg, lightgrey 3px, transparent 3px),
-    linear-gradient(90deg, lightgrey 3px, transparent 3px);
+    linear-gradient(0deg, #f4f4f4 3px, transparent 3px),
+    linear-gradient(90deg, #f4f4f4 3px, transparent 3px);
   background-size: 200px 200px;
+}
+
+#welcome-text::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.85), transparent);
+  z-index: 0;
+}
+
+.main-header {
+  z-index: 1;
 }
