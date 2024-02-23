@@ -5,7 +5,7 @@ import Sidebar from '../components/Sidebar.jsx';
 import Modal from 'react-modal';
 import { Line } from 'react-chartjs-2';
 import { Chart,  PointElement, LineElement } from 'chart.js';
-
+import Footer from '../components/Footer.jsx';
 
 Chart.register(PointElement);
 Chart.register(LineElement);
@@ -297,6 +297,7 @@ const Income = () => {
                 </Modal>
             </div>
         </div>
+        <Footer />
         </>
     )
 }
