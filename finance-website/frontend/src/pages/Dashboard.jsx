@@ -7,6 +7,8 @@ import { Bar } from 'react-chartjs-2';
 import { Chart, LinearScale, CategoryScale, BarElement, Tooltip, Title, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { ArcElement } from 'chart.js';
+import Footer from '../components/Footer.jsx';
+
 
 Chart.register(
   CategoryScale,
@@ -264,7 +266,7 @@ const Dashboard = () => {
 
       </div>
     </div>
-
+    <Footer />
     </>
   )
 }
