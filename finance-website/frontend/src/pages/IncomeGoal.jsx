@@ -3,6 +3,8 @@ import { Navbar } from '../components/Navbar.jsx';
 import './IncomeGoal.css';
 import Sidebar from '../components/Sidebar.jsx';
 import Modal from 'react-modal';
+import Footer from '../components/Footer.jsx';
+
 
 
 Modal.setAppElement('#root');
@@ -156,10 +158,10 @@ const IncomeGoal = () => {
                 </div>
                 
             </div>
-            <div className='mt-52'>
+            <div className='mt-12'>
                 <p></p>
             </div>
-            
+            <Footer />
         </>
     );
 };
