@@ -3,6 +3,8 @@ import { Navbar } from '../components/Navbar.jsx';
 import './Subscriptions.css'
 import Sidebar from '../components/Sidebar.jsx';
 import Modal from 'react-modal';
+import Footer from '../components/Footer.jsx';
+
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root');
@@ -126,7 +128,7 @@ const Subscriptions = () => {
         <>
         <Navbar/>
         < Sidebar />
-        <div className="p-10">
+        <div className="p-10 mb-12">
             <div id="subscription-head" className="flex flex-col justify-center lg:text-7xl text-5xl mx-auto w-screen text-center">
                 <h1 className="">Subscriptions:</h1>
                 <h1 className="mt-3">{totalSubscriptions}</h1>
@@ -232,6 +234,7 @@ const Subscriptions = () => {
                 </Modal>
             </div>
         </div>
+        <Footer />
         </>
     )
 }
