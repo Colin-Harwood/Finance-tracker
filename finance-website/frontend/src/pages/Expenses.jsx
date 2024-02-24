@@ -194,9 +194,10 @@ const Expenses = () => {
 
     return (
         <>
+        <div className="flex flex-col min-h-screen">
         <Navbar/>
         < Sidebar />
-        <div className="p-10">
+        <div className="p-10 flex-grow">
             <div id="expense-head" className="flex justify-center lg:text-7xl text-5xl mx-auto w-screen text-center">
                 <h1 className="">Expense Sources</h1>
             </div>
@@ -307,6 +308,7 @@ const Expenses = () => {
             </div>
         </div>
         <Footer />
+        </div>
         </>
     )
 }
