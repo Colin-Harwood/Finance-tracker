@@ -126,9 +126,10 @@ const Subscriptions = () => {
 
     return (
         <>
+        <div className="flex flex-col min-h-screen">
         <Navbar/>
         < Sidebar />
-        <div className="p-10 mb-12">
+        <div className="p-10 mb-12 flex-grow">
             <div id="subscription-head" className="flex flex-col justify-center lg:text-7xl text-5xl mx-auto w-screen text-center">
                 <h1 className="">Subscriptions:</h1>
                 <h1 className="mt-3">{totalSubscriptions}</h1>
@@ -235,6 +236,7 @@ const Subscriptions = () => {
             </div>
         </div>
         <Footer />
+        </div>
         </>
     )
 }
