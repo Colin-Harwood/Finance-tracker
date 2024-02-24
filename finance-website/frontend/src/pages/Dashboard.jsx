@@ -201,7 +201,7 @@ const Dashboard = () => {
         </div>
 
         
-        <div className="lg:col-span-5 col-span-11 column h-32">
+        <div className="lg:col-span-5 col-span-11 column lg:h-32 h-auto">
           <p className="text-4xl text-center"><b>Income Goal</b></p>
           <div className="flex flex-col lg:flex-row content-center justify-around pl-10 lg:mt-3 mt-0 w-full">
           <p className="text-3xl text-center"><b>{percentGoal}</b></p>

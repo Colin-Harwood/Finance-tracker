@@ -29,6 +29,13 @@ const Income = () => {
     let month = date.split('-')[1];
     let year = date.split('-')[0];
     
+    var windowHeight = window.innerHeight;
+    var documentHeight = document.body.offsetHeight;
+    console.log("Window height: " + windowHeight + "px");
+    console.log("Document height: " + documentHeight + "px");
+
+    var unusedHeight = windowHeight - documentHeight;
+    console.log("Unused height: " + unusedHeight + "px");
 
     useEffect(() => {
       fetchData();
@@ -185,9 +192,10 @@ const Income = () => {
 
     return (
         <>
+        <div className="flex flex-col min-h-screen">
         <Navbar/>
         < Sidebar />
-        <div className="p-10">
+        <div className="p-10 flex-grow">
             <div id="income-head" className="flex justify-center lg:text-7xl text-5xl mx-auto w-screen text-center">
                 <h1 className="">Income Sources</h1>
             </div>
@@ -297,7 +305,10 @@ const Income = () => {
                 </Modal>
             </div>
         </div>
-        <Footer />
+        <div >
+          <Footer />
+        </div>
+        </div>
         </>
     )
 }
