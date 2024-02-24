@@ -103,9 +103,10 @@ const IncomeGoal = () => {
 
     return (
         <>
+            <div className="flex flex-col min-h-screen">
             <Navbar />
             <Sidebar />
-            <div className="p-10">
+            <div className="p-10 flex-grow">
                 <div id="income-head" className="flex flex-col justify-center items-center lg:text-7xl text-5xl text-center lg:pl-0 pl-10">
                     <h1 className="">Income Goal:</h1>
                     <h1 className="">{totalIncomeThisMonth}/{incomeGoalValue}</h1>
@@ -162,6 +163,7 @@ const IncomeGoal = () => {
                 <p></p>
             </div>
             <Footer />
+            </div>
         </>
     );
 };
