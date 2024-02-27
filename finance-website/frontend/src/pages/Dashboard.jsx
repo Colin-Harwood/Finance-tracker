@@ -26,7 +26,7 @@ const Dashboard = () => {
   const name = localStorage.getItem('userName');
 
   useEffect(() => {
-    fetch('https://noctuque-finance-prod.onrender.com/info', {
+    fetch('http://localhost:3000/info', {
       method: 'GET',
       credentials: 'include'
     })

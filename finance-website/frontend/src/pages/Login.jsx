@@ -16,7 +16,7 @@ const Login = () => {
     event.preventDefault();
 
     // Send a POST request to the /login route
-    const response = await fetch('https://noctuque-finance-prod.onrender.com/login', {
+    const response = await fetch('http://localhost:3000/login', {
       method: 'POST',
       credentials: 'include',
       headers: {
