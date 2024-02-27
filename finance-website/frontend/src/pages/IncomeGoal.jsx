@@ -17,7 +17,7 @@ const IncomeGoal = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:3000/info', {
+            const response = await fetch('https://noctuque-finance-prod.onrender.com/info', {
                 method: 'GET',
                 credentials: 'include'
               })
@@ -49,7 +49,7 @@ const IncomeGoal = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
     
-        const response = await fetch('http://localhost:3000/incomeGoal', {
+        const response = await fetch('https://noctuque-finance-prod.onrender.com/incomeGoal', {
           method: 'POST',
           credentials: 'include',
           headers: {

@@ -10,7 +10,7 @@ const Signup = () => {
     const username = event.target.elements.userName.value;
     const password = event.target.elements.password.value;
 
-    fetch('http://localhost:3000/signup', {
+    fetch('https://noctuque-finance-prod.onrender.com/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

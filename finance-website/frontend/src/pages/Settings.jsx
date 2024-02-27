@@ -17,7 +17,7 @@ const Settings = () => {
         const currentPassword = document.getElementById('current-password').value;
         const newPassword = document.getElementById('new-password').value;
         console.log(currentPassword, newPassword);
-        const response = await fetch('http://localhost:3000/change-password', {
+        const response = await fetch('https://noctuque-finance-prod.onrender.com/change-password', {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -39,7 +39,7 @@ const Settings = () => {
       event.preventDefault();
       const confirmPassword = document.getElementById('confirm-password').value;
       console.log(confirmPassword);
-      const response = await fetch('http://localhost:3000/delete-account', {
+      const response = await fetch('https://noctuque-finance-prod.onrender.com/delete-account', {
           method: 'DELETE',
           credentials: 'include',
           headers: {

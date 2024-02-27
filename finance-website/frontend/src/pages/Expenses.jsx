@@ -34,7 +34,7 @@ const Expenses = () => {
     }, []);
 
     const fetchData = () => {
-        fetch('http://localhost:3000/info', {
+        fetch('https://noctuque-finance-prod.onrender.com/info', {
           method: 'GET',
           credentials: 'include'
         })
@@ -54,7 +54,7 @@ const Expenses = () => {
     const handleSubmit = async (event) => {
       event.preventDefault();
   
-      const response = await fetch('http://localhost:3000/expense', {
+      const response = await fetch('https://noctuque-finance-prod.onrender.com/expense', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -71,7 +71,7 @@ const Expenses = () => {
     };
 
     const handleDelete = async (source, amount) => {
-        const response = await fetch('http://localhost:3000/expense', {
+        const response = await fetch('https://noctuque-finance-prod.onrender.com/expense', {
           method: 'DELETE',
           credentials: 'include',
           headers: {
@@ -111,7 +111,7 @@ const Expenses = () => {
   const handleEditSubmit = async (event) => {
     event.preventDefault();
   
-    const response = await fetch('http://localhost:3000/expense', {
+    const response = await fetch('https://noctuque-finance-prod.onrender.com/expense', {
       method: 'PUT',
       credentials: 'include',
       headers: {

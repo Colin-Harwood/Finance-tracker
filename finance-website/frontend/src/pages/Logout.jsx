@@ -8,7 +8,7 @@ const Logout = () => {
 
   useEffect(() => {
     // Call logout function when component mounts
-    fetch('http://localhost:3000/logout', {
+    fetch('https://noctuque-finance-prod.onrender.com/logout', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
