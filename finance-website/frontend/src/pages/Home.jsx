@@ -25,13 +25,13 @@ const Home = () => {
          Helping Empower Your Financial Journey with Progressive Solutions.
         </p>
         {isLoggedIn ? (
-          <a href="/Dashboard">
+          <a href="/dashboard">
           <button className="text-left mt-10 mb-10" id='DashboardButton'>
             Dashboard
           </button>
           </a>
         ) : (
-          <a href="/Signup">
+          <a href="/signup">
           <button className="text-left mt-10 mb-10" id='SignUpButton'>
             Sign Up
           </button>
