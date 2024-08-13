@@ -2,6 +2,8 @@
 
 </hr>
 
+<h2><a href="https://noctuquefinance.netlify.app/">View the live website!</a></h2>
+
 <h2>Noctuque Finance seamlessly integrates the MERN stack, providing a robust platform for intuitive financial tracking. Users can effortlessly manage expenses, income, subscriptions, and goals, while interactive Chart.js visualizations offer valuable insights for informed decision-making.</h2>
 
 <h1>Languages/Technologies Used</h1>
